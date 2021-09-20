@@ -19,7 +19,10 @@ class CreateRatingsTable extends Migration
             $table->tinyInteger('ra_number')->default(0);
             $table->string('ra_content')->nullable();
             $table->integer('ra_user_id')->index()->default(0);
-            $table->timestamps();
+            $table->string('ra_name')->nullable();
+            $table->string('ra_email')->nullable();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
     }
 

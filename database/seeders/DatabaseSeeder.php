@@ -13,12 +13,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-        \DB::table('admins')->insert([
-            'name' => 'Vo Van Bi',
-            'email' => 'vbii.ued@gmail.com',
+        \DB::table('users')->insert([
+            'name' => 'Nguyen Van A',
+            'email' => 'shoesshop.ued@gmail.com',
             'password' => bcrypt('123'),
-
+            'type' => 0,
+        ]);
+        \DB::table('categories')->insert([
+            'c_name' => 'Áo',
+            'c_slug' => 'ao',
+            'c_home' => 1,
+        ]);
+        \DB::table('categories')->insert([
+            'c_name' => 'Quần',
+            'c_slug' => 'quan',
+            'c_home' => 1,
         ]);
     }
 }

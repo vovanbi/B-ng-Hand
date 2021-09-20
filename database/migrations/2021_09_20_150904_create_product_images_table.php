@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTableComment extends Migration
+class CreateProductImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateTableComment extends Migration
      */
     public function up()
     {
-        Schema::create('comments', function (Blueprint $table) {
-            $table->id();
-            $table->integer('co_article_id')->index()->default(0);
-            $table->string('co_content')->nullable();
-            $table->integer('co_user_id')->index()->default(0);
-            $table->string('co_name')->nullable();
-            $table->string('co_email')->nullable();
+        Schema::create('product_images', function (Blueprint $table) {
+            $table->id();         
+            $table->string('pi_avatar')->nullable();
+            $table->integer('pi_product_id')->unsigned();
+            $table->foreign('pi_product_id')->references('id')->on('products');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
@@ -32,6 +30,6 @@ class CreateTableComment extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists('product_images');
     }
 }
