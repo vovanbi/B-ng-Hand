@@ -49,9 +49,9 @@
                             <div class="card shop-list border-0 position-relative m-2">
                                 <div class="ribbon ribbon-left ribbon-danger overflow-hidden"><span class="text-center d-block shadow small h6">Hot</span></div>
                                 <div class="shop-image position-relative overflow-hidden rounded shadow">
-                                    <a href="{{ route('get.detail.product',$product->pro_slug) }}"><img src="{{ asset(pare_url_file($product->images[0]->i_avatar)) }}" class="img-fluid" alt=""></a>
+                                    <a href="{{ route('get.detail.product',$product->pro_slug) }}"><img src="{{ asset(($product->images[0]->i_avatar)) }}" class="img-fluid" alt=""></a>
                                     <a href="{{ route('get.detail.product',$product->pro_slug) }}" class="overlay-work">
-                                        <img src="{{ asset(pare_url_file($product->images[1]->i_avatar)) }}" class="img-fluid" alt="">
+                                        <img src="{{ asset(($product->images[1]->i_avatar)) }}" class="img-fluid" alt="">
                                     </a>
                                     <ul class="list-unstyled shop-icons">
                                         <li><a href="{{ route('get.like.product',$product->id)}}" class="btn btn-icon btn-pills btn-soft-danger"><i data-feather="heart" class="icons"></i></a></li>
@@ -131,9 +131,9 @@
                         <div class="card shop-list border-0 position-relative">
                             <div class="ribbon ribbon-left ribbon-primary overflow-hidden"><span class="text-center d-block shadow small h6">Selling</span></div>
                             <div class="shop-image position-relative overflow-hidden rounded shadow">
-                                <a href="{{ route('get.detail.product',$product->pro_slug) }}"><img src="{{ asset(pare_url_file($product->images[0]->i_avatar)) }}" class="img-fluid" alt=""></a>
+                                <a href="{{ route('get.detail.product',$product->pro_slug) }}"><img src="{{ asset(($product->images[0]->i_avatar)) }}" class="img-fluid" alt=""></a>
                                 <a href="{{ route('get.detail.product',$product->pro_slug) }}" class="overlay-work">
-                                    <img src="{{ asset(pare_url_file($product->images[1]->i_avatar)) }}" class="img-fluid" alt="">
+                                    <img src="{{ asset(($product->images[1]->i_avatar)) }}" class="img-fluid" alt="">
                                 </a>
                                 <ul class="list-unstyled shop-icons">
                                     <li><a href="{{ route('get.like.product',$product->id)}}" class="btn btn-icon btn-pills btn-soft-danger"><i data-feather="heart" class="icons"></i></a></li>

@@ -24,7 +24,7 @@ class RatingController extends FrontendController
             'ra_content' => $request->content,
             'ra_email' => $request->email,
             'ra_name' => $request->name,
-            'ra_user_id' => get_data_user('web') ? get_data_user('web') : 0,           
+            'ra_user_id' => auth()->user() ? auth()->user() : 0,           
         ]);    
         }
         else

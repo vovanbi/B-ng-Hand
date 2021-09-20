@@ -21,7 +21,7 @@
                             <li><a href="{{route('get.aboutUs')}}" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Giới thiệu</a></li>                           
                             <li><a href="{{route('get.contact')}}" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Liên hệ</a></li>
                             <li> 
-                                @if(get_data_user('web'))
+                                @if(\Auth::check())
                                 <a href="{{route('get.user')}}" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Tài khoản</a>
                                 @else
                                 <a href="{{route('get.user')}}" class="text-foot"><i class="mdi mdi-chevron-right mr-1"></i> Tài khoản</a>

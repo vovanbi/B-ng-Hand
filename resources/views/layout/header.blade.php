@@ -27,7 +27,7 @@
                                 <div class="pb-4">
                                     @foreach(\Cart::content() as $product)
                                     <div class="media align-items-center mt-4">
-                                        <img src="{{ asset(pare_url_file($product->options->avatar)) }}" class="shadow rounded" style="max-height: 64px;" alt="">
+                                        <img src="{{ asset($product->options->avatar) }}" class="shadow rounded" style="max-height: 64px;" alt="">
                                         <div class="media-body text-left ml-3">
                                             <h6 class="text-dark mb-0 text-cart">{{ $product->name }}</h6>
                                             <p class="text-muted mb-0">{{ $product->price }} X {{$product->qty}}</p>
@@ -55,7 +55,7 @@
                     <li class="list-inline-item mb-0">
                         <div class="dropdown dropdown-primary">
                             <button type="button" class="btn btn-icon btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="uil uil-user align-middle icons"></i></button>
-                            @if(get_data_user('web'))                           
+                            @if(\Auth::check())                           
                             <div class="dropdown-menu dropdown-menu-right bg-white shadow rounded border-0 mt-3 py-3" style="width: 200px;">
                                 <a class="dropdown-item text-dark" href="{{ route('get.user') }}"><i class="uil uil-user align-middle mr-1"></i> Tài khoản</a>
     

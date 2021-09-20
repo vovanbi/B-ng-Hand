@@ -8,7 +8,7 @@ class CheckLoginUser
 {
     public function handle($request, Closure $next)
     {
-        if(!get_data_user('web'))
+    	if(!auth()->check())
         {
             return redirect()->route('get.login');
         }

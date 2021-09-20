@@ -103,9 +103,9 @@ class ShoppingCartController extends FrontendController
     public function savePayment(Request $request)
     {
         $totalMoney = str_replace(',','',\Cart::subtotal(0,3));
-        $email = get_data_user('web','email');
+        $email = auth()->user()->email;
         $order=[
-            'o_user_id' => get_data_user('web'),
+            'o_user_id' => auth()->id(),
             'o_total' => (int)$totalMoney,
             'o_note' => $request->note,
             'o_address' => $request->address,
@@ -134,7 +134,7 @@ class ShoppingCartController extends FrontendController
             'transaction' => $order,
             'products' => $products, 
             'email' => $email,   
-            'userName' => get_data_user('web','name'),      
+            'userName' => auth()->user()->name,      
         ];
         Mail::send('shopping.sendMail',$data, function($message) use ($email){
                 $message->to($email,'Xác nhận đơn hàng ')->subject('Xác nhận đơn hàng');
@@ -146,13 +146,13 @@ class ShoppingCartController extends FrontendController
     {
         if($request->vnp_ResponseCode=='00')
         {
-            $email = get_data_user('web','email');
+            $email = auth()->user()->email;
             $order=[
-                'o_user_id' => get_data_user('web'),
+                'o_user_id' => auth()->id(),
                 'o_total' => $request->vnp_Amount/100,
                 'o_note' => $request->vnp_OrderInfo,
-                'o_address' => get_data_user('web','address'),
-                'o_phone' => get_data_user('web','phone'),
+                'o_address' => auth()->user()->address,
+                'o_phone' => auth()->user()->phone,
                 'o_type' => 1,
                 'vnp_BankTranNo' =>$request->vnp_BankTranNo,
                 'vnp_BankCode' =>$request->vnp_BankCode,
@@ -179,7 +179,7 @@ class ShoppingCartController extends FrontendController
                     'transaction' => $order,
                     'products' => $products, 
                     'email' => $email,   
-                    'userName' => get_data_user('web','name'),      
+                    'userName' => auth()->user()->name,      
                 ];
                 Mail::send('shopping.sendMail',$data, function($message) use ($email){
                     $message->to($email,'Xác nhận đơn hàng ')->subject('Xác nhận đơn hàng');

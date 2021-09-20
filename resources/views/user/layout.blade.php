@@ -26,7 +26,7 @@
                                     <div class="col-lg-10 col-md-9">
                                         <div class="row align-items-end">
                                             <div class="col-md-7 text-md-left text-center mt-4 mt-sm-0">
-                                                <h3 class="title mb-0">{{get_data_user('web','name')}}</h3>
+                                                <h3 class="title mb-0">{{auth()->user()->name}}</h3>
                                                
                                             </div><!--end col-->
                                             <div class="col-md-5 text-md-right text-center">

@@ -25,7 +25,7 @@
                                                 <label for="fullname">Họ và tên <span class="text-danger">*</span></label>
                                                 <div class="position-relative">
                                                     <i data-feather="user" class="fea icon-sm icons"></i>
-                                                    <input type="text" class="form-control pl-5 {{ ($errors->has('name')) ? 'is-invalid' : '' }}" placeholder="Nguyen Van A" name="name" id="fullname">
+                                                    <input value="{{ old('name') }}" required="" type="text" class="form-control pl-5 {{ ($errors->has('name')) ? 'is-invalid' : '' }}" placeholder="Nguyen Van A" name="name" id="fullname">
                                                     <span class="form-message">
                                                          @if($errors->has('name'))
                                                         <span class="text-danger">
@@ -41,7 +41,7 @@
                                                 <label>Số điện thoại <span class="text-danger">*</span></label>
                                                 <div class="position-relative">
                                                     <i data-feather="phone" class="fea icon-sm icons"></i>
-                                                    <input type="number" class="form-control pl-5 {{ ($errors->has('phone')) ? 'is-invalid' : '' }}" placeholder="0528152815" name="phone" id="number">
+                                                    <input value="{{ old('phone') }}" required="" type="number" class="form-control pl-5 {{ ($errors->has('phone')) ? 'is-invalid' : '' }}" placeholder="0528152815" name="phone" id="number">
                                                      <span class="form-message">
                                                          @if($errors->has('phone'))
                                                         <span class="text-danger">
@@ -58,7 +58,7 @@
                                                 <label>Địa chỉ <span class="text-danger">*</span></label>
                                                 <div class="position-relative">
                                                     <i class="fea icon-sm icons uil-location-point"></i>
-                                                    <input type="text" class="form-control pl-5 {{ ($errors->has('address')) ? 'is-invalid' : '' }}" placeholder="491 Ton Duc Thang, Lien Chieu, Da Nang" name="address" id="address">
+                                                    <input value="{{ old('address') }}" required="" type="text" class="form-control pl-5 {{ ($errors->has('address')) ? 'is-invalid' : '' }}" placeholder="491 Ton Duc Thang, Lien Chieu, Da Nang" name="address" id="address">
                                                      <span class="form-message">
                                                           @if($errors->has('address'))
                                                         <span class="text-danger">
@@ -75,7 +75,7 @@
                                                 <label>Email <span class="text-danger">*</span></label>
                                                 <div class="position-relative">
                                                     <i data-feather="mail" class="fea icon-sm icons"></i>
-                                                    <input type="text" class="form-control pl-5 {{ ($errors->has('email')) ? 'is-invalid' : '' }}" placeholder="Email" name="email"  id="email">
+                                                    <input value="{{ old('email') }}" required="" type="text" class="form-control pl-5 {{ ($errors->has('email')) ? 'is-invalid' : '' }}" placeholder="Email" name="email"  id="email">
                                                      <span class="form-message">
                                                           @if($errors->has('email'))
                                                         <span class="text-danger">
@@ -92,7 +92,7 @@
                                                 <label>Mật khẩu <span class="text-danger">*</span></label>
                                                 <div class="position-relative">
                                                     <i data-feather="key" class="fea icon-sm icons"></i>
-                                                    <input type="password" class="form-control pl-5 {{ ($errors->has('password')) ? 'is-invalid' : '' }}" placeholder="Password" name="password" id="password" >
+                                                    <input required="" type="password" class="form-control pl-5 {{ ($errors->has('password')) ? 'is-invalid' : '' }}" placeholder="Password" name="password" id="password" >
                                                      <span class="form-message">
                                                             @if($errors->has('password'))
                                                         <span class="text-danger">
@@ -108,7 +108,7 @@
                                                 <label>Nhập lại mật khẩu <span class="text-danger">*</span></label>
                                                 <div class="position-relative">
                                                     <i data-feather="key" class="fea icon-sm icons"></i>
-                                                    <input type="password" class="form-control pl-5  {{ ($errors->has('password_confirmation')) ? 'is-invalid' : '' }} " placeholder="Password" name="password_confirmation" id="password_confirmation">
+                                                    <input required="" type="password" class="form-control pl-5  {{ ($errors->has('password_confirmation')) ? 'is-invalid' : '' }} " placeholder="Password" name="password_confirmation" id="password_confirmation">
                                                     <span class="form-message">
                                                             @if($errors->has('password_confirmation'))
                                                         <span class="text-danger">

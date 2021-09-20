@@ -17,7 +17,7 @@ class UserController extends FrontendController
     }
     public function getUser()
     {
-    	$user=User::find(get_data_user('web'));
+    	$user=User::find(auth()->id());
  
         $viewData=[
             'user' => $user
@@ -28,12 +28,12 @@ class UserController extends FrontendController
     public function getSetting()
     {
         //info user
-        $user=User::find(get_data_user('web'));
+        $user=User::find(auth()->id());
     	return view('user.setting',compact('user'));
     }
     public function updateInfo(Request $request)
     {
-        $user=User::find(get_data_user('web'));
+        $user=User::find(auth()->id());
         $user->name=$request->name;
         $user->email=$request->email;
         $user->phone=$request->number;
@@ -53,7 +53,7 @@ class UserController extends FrontendController
     public function updatePassword(Request $request)
     {
          
-        $user=User::find(get_data_user('web'));
+        $user=User::find(auth()->id());
 
         if(Hash::check($request->password,$user->password))
         {
@@ -80,11 +80,11 @@ class UserController extends FrontendController
     }
     public function postUser()
     {
-        $user = User::find(get_data_user('web'));//id
-        $orders = Order::where('o_user_id',get_data_user('web'))->get();
-        $totalorder = Order::where('o_user_id',get_data_user('web'))->select('id')->count('id');
+        $user = User::find(auth()->id());//id
+        $orders = Order::where('o_user_id',auth()->id())->get();
+        $totalorder = Order::where('o_user_id',auth()->id())->select('id')->count('id');
         $totalorderDone = Order::where([
-            ['o_user_id',get_data_user('web')],
+            ['o_user_id',auth()->id()],
             ['o_status',Order::STATUS_DONE],
         ])->select('id')->count('id');
         $viewData = [
