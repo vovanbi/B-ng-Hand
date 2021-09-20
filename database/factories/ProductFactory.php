@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 class UserFactory extends Factory
 {
 	protected $model = Product::class;
-
+a
 
 	public function definition()
 	    {
