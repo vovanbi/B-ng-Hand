@@ -19,7 +19,8 @@ class CreateCategoriesTables extends Migration
             $table->string('c_slug')->index();
             $table->string('c_avatar')->nullable();
             $table->integer('c_home')->default(0)->index();
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
     }
 

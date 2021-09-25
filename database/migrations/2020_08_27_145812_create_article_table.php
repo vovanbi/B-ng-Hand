@@ -24,7 +24,8 @@ class CreateArticleTable extends Migration
             $table->string('a_avatar')->nullable();
             $table->integer('a_view')->default(0);
 
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
     }
 
