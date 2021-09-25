@@ -21,7 +21,8 @@ class CreateOrdersTable extends Migration
             $table->string('o_address')->nullable();
             $table->string('o_phone')->nullable();
             $table->tinyInteger('o_status')->default(0)->index();
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
     }
 

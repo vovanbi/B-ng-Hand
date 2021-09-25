@@ -20,7 +20,9 @@ class CreateContactsTable extends Migration
             $table->string('c_title')->nullable();
             $table->text('c_content')->nullable();
             $table->tinyInteger('c_status')->default(0);
-            $table->timestamps();
+            $table->char('c_phone')->nullable();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
     }
 

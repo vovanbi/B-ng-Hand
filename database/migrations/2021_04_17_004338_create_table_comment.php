@@ -18,7 +18,10 @@ class CreateTableComment extends Migration
             $table->integer('co_article_id')->index()->default(0);
             $table->string('co_content')->nullable();
             $table->integer('co_user_id')->index()->default(0);
-            $table->timestamps();
+            $table->string('co_name')->nullable();
+            $table->string('co_email')->nullable();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
     }
 

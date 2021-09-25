@@ -26,7 +26,12 @@ class CreateProductsTable extends Migration
             $table->string('pro_slug')->index();
             $table->string('pro_title_seo')->nullable();
             $table->longText('pro_content')->nullable();
-            $table->timestamps();
+            $table->integer('pro_number')->default(0);
+            $table->integer('pro_buy')->default(0);
+            $table->integer('pro_total_number')->default(0);
+            $table->integer('pro_total_rating')->default(0);
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
     }
 
