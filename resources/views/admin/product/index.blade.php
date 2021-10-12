@@ -47,7 +47,7 @@
                             </td>
                             <td>{{ $product->category->c_name }}</td>
                             <td>
-                                <img src="{{ asset(pare_url_file($product->images[0]->i_avatar))}}" class="img img-responsive" style="width: 80px;height: 80px;">
+                                <img src="{{ asset('uploads')}}/{{$product->images[0]->pi_avatar}}" class="img img-responsive" style="width: 80px;height: 80px;">
                             </td>
                             <td>
                                 <a href="{{ route('admin.action.product',['active',$product->id]) }}" class="label {{ $product->getStatus($product->pro_active)['class'] }}">{{ $product->getStatus($product->pro_active)['name'] }}</a>
@@ -57,7 +57,7 @@
                             </td>
                             <td>
                                 <a class="btn btn-info" style="font-size: 12px;" href="{{ route('admin.edit.product',$product->id) }}"><i class="fa fa-pencil"></i> Cập nhật</a>
-                                <a class="btn btn-danger" style="font-size: 12px;" href="{{ route('admin.action.product',['delete',$product->id]) }}"><i class="fa fa-trash"></i> Delete</a>
+                                <a class="btn btn-danger" style="font-size: 12px;" href="{{ route('admin.action.product',['delete',$product->id]) }}" onclick="return confirm('Bạn chắc chắn muốn xóa mục này?');"><i class="fa fa-trash"></i> Delete</a>
                             </td>
                         </tr>
                     @endforeach               

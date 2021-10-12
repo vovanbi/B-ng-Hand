@@ -25,4 +25,8 @@ class Category extends Model
     {
         return data_get($this->home,$this->c_home,'[error]');
     }
+    public function products()
+    {
+        return $this->hasMany(Product::class,'pro_category_id');
+    }
 }

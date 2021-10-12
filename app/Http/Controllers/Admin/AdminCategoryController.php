@@ -6,6 +6,7 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Product;
 use App\Http\Requests\RequestCategory;
 use Illuminate\Support\Str;
 
@@ -71,11 +72,19 @@ class AdminCategoryController extends Controller
      */
     public function insertOrUpdate($requestCategory,$id='')
     {
-            $category= new Category();
-            if($id) $category= Category::find($id);
-            $category->c_name = $requestCategory->name;
-            $category->c_slug = Str::slug($requestCategory->name);
-            $category->save();
+        $category= new Category();
+        if($id) $category= Category::find($id);
+        $category->c_name = $requestCategory->name;
+        $category->c_slug = Str::slug($requestCategory->name);
+        if($requestCategory->hasFile('avatar'))
+        {
+            $name = date("y-m-d-h-m-s", time()) .'_'. $requestCategory->avatar->getClientOriginalName();
+            $requestCategory->avatar->move(public_path().'/uploads/category', $name);
+            //save image
+            $category->c_avatar = $name;
+        }
+        $category->save();
+
     }
     public function action($action,$id)
     {
@@ -85,8 +94,22 @@ class AdminCategoryController extends Controller
             switch ($action)
             {
                 case 'delete':
+                    $products = Product::where('pro_category_id','=',$category->id)->get();
+                    foreach ($products as $key => $item) {
+                        foreach ($item->images as $key => $value) {
+                            $unlink= 'uploads/'.$value->pi_avatar;
+                            unlink($unlink);
+                            $value->delete();
+                        }
+                        $item->delete();
+                    }
+                    if($category->c_avatar){
+                        $unlink= 'uploads/category/'.$category->c_avatar;
+                        unlink($unlink);
+                    }
                     $category->delete();
                     $messages = 'Xoá thành công';
+                    
                     break;
                 case 'home':
                     $category->c_home = $category->c_home == 1 ? 0 : 1;

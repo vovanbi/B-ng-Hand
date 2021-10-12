@@ -59,48 +59,20 @@ class AdminProductController extends Controller
         $product->pro_title_seo = $requestProduct->pro_title_seo ? $requestProduct->pro_title_seo : $requestProduct->pro_name;
         
         $product->save();
+
         if($requestProduct->hasFile('avatar'))
         {
-            foreach ($_FILES['avatar']['tmp_name'] as $key => $value) {
-                $baseFilename = public_path() . '/uploads/' . $_FILES['avatar']['name'][$key];
-                $info = new SplFileInfo($baseFilename);
-                $ext = strtolower($info->getExtension());
-                $extend = array();
-                $folder = '';
-                if ( ! $extend )
-                {
-                    $extend = ['png','jpg','jpeg'];
-                }
-                if( !in_array($ext,$extend))
-                {
-                    return $data['code'] = 0;
-                }
-                $nameFile = trim(str_replace('.'.$ext,'',strtolower($info->getFilename())));
-                $filename = date('Y-m-d__').Str::slug($nameFile) . '.' . $ext;
-                $path = public_path().'/uploads/'.date('Y/m/d/');
-                if ($folder)
-                {
-                    $path = public_path().'/uploads/'.$folder.'/'.date('Y/m/d/');
-                }
-                if ( !\File::exists($path))
-                {
-                    mkdir($path,0777,true);
-                }
-                move_uploaded_file($value, $path. $filename);
-                
-                //save database
+            foreach ($requestProduct->avatar as $key => $value) {
+                $name = date("y-m-d-h-m-s", time()) .'_'. $value->getClientOriginalName();
+                $value->move(public_path().'/uploads', $name);
+                //save image
                 $images= new Images();
                 // if($id) $images= Images::find($product->pro_avatar);
-                $images->i_avatar = $filename;
-                $images->i_product_id = $product->id;
+                $images->pi_avatar = $name;
+                $images->pi_product_id = $product->id;
                 $images->save();
             }
         }
-        
-
-        
-
-        
     }
     public function action($action,$id)
     {
@@ -112,17 +84,25 @@ class AdminProductController extends Controller
                 case 'active':
                     $product->pro_active = $product->pro_active ? 0 : 1;
                     $product->save();
+                    $messages = 'Cập nhật thành công';
                     break;
                 case 'hot':
                     $product->pro_hot = $product->pro_hot ? 0 : 1;
                     $product->save();
+                    $messages = 'Cập nhật thành công';
                     break;
                 case 'delete':
+                    foreach ($product->images as $key => $value) {
+                        $unlink= 'uploads/'.$value->pi_avatar;
+                        unlink($unlink);
+                        $value->delete();
+                    }
                     $product->delete();
+                    $messages = 'Xoá thành công';
                     break;
             }
 
         }
-        return redirect()->back();
+        return redirect()->back()->with('success',$messages);
     }
 }

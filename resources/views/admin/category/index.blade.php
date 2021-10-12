@@ -29,6 +29,9 @@
                 </th>
                 <th class="th-sm">Tên danh mục
 
+                </th>
+                <th class="th-sm">Hình ảnh
+
                 </th>          
                 <th class="th-sm">Hiện trang chủ
 
@@ -45,11 +48,14 @@
                       <td>{{ $category->id }}</td>
                       <td>{{ $category->c_name }}</td>
                       <td>
+                          <img src="{{ asset('uploads/category')}}/{{$category->c_avatar}}" class="img img-responsive" style="width: 80px;height: 80px;">
+                      </td>
+                      <td>
                            <a href="{{ route('admin.action.category',['home',$category->id]) }}" class="label {{ $category->getHome($category->c_home)['class'] }}">{{ $category->getHome($category->c_home)['name'] }}</a>
                       </td>
                       <td>
                           <a class="btn btn-info" style="font-size: 12px;" href="{{ route('admin.edit.category',$category->id) }}"><i class="fa fa-pencil"></i> Cập nhật</a>
-                          <a class="btn btn-danger" style="font-size: 12px;" href="{{ route('admin.action.category',['delete',$category->id]) }}"><i class="fa fa-trash"></i> Xóa</a>
+                          <a class="btn btn-danger" style="font-size: 12px;" href="{{ route('admin.action.category',['delete',$category->id]) }}" onclick="return confirm('Bạn chắc chắn muốn xóa mục này?');"><i class="fa fa-trash"></i> Xóa</a>
                       </td>
                   </tr>
                   @endforeach
