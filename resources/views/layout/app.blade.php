@@ -5,10 +5,10 @@
 
     <head>
         <meta charset="utf-8" />
-        <title>Giày Thể Thao - ShoesShop</title>
+        <title>Shop Thời Trang - Bông Hand</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="ShoesShop Chuyên Các Loại Giày Thể Thao" />
-        <meta name="keywords" content="ShoesShop, giay the thao, sneaker" />
+        <meta name="description" content="Bông Hand Chuyên Các Loại Đồ Thời Trang" />
+        <meta name="keywords" content="Bông Hand, giay the thao, sneaker" />
         <meta name="author" content="Shreethemes" />
         <meta name="email" content="shreethemes@gmail.com" />
         <meta name="website" content="http://www.shreethemes.in" />
@@ -46,7 +46,7 @@
         <!-- Modal Content End -->
         
         <!-- Back to top -->
-        <a href="#" class="btn btn-icon btn-primary back-to-top"><i data-feather="arrow-up" class="icons"></i></a>
+        <a href="#" class="btn btn-icon btn-black back-to-top"><i data-feather="arrow-up" class="icons"></i></a>
         <!-- Back to top -->
        
         <!-- javascript -->

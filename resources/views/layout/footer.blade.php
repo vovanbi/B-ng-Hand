@@ -4,7 +4,7 @@
                 <div class="row">
                     <div class="col-lg-4 col-12 mb-0 mb-md-4 pb-0 pb-md-2">
                         <a href="#" class="logo-footer">
-                            <img src="{{ asset('') }}images/logo.png" height="50" alt="">
+                            <img src="{{ asset('') }}images/logo.png" height="100" alt="">
                         </a>
                         <p class="mt-4">Công ty được thành lập ngày 12-8-2020 với mong muốn mang lại nhưng sản phẩm tốt nhất cho khách hàng.</p>
                         <ul class="list-unstyled social-icon social mb-0 mt-4">
@@ -61,7 +61,7 @@
                                 </div>
                             </div>
                         </form> -->
-                        <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FShoesShop-Gi%25C3%25A0y-Th%25E1%25BB%2583-Thao-100300708882499%2F%3Fref%3Dpages_you_manage&tabs=timeline&width=255&height=255&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=1267571153658728" width="255" height="255" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                        <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FB%25C3%25B4ng-Hand-101387339002437&tabs=timeline&width=255&height=255&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=1267571153658728" width="255" height="255" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
                     </div><!--end col-->
                 </div><!--end row-->
             </div><!--end container-->
@@ -71,7 +71,7 @@
                 <div class="row align-items-center">
                     <div class="col-sm-6">
                         <div class="text-sm-left">
-                            <p class="mb-0">© 2019-20 ShoesShop. Design with <i class="mdi mdi-heart text-danger"></i> by <a href="" target="_blank" class="text-reset">ShoesShop</a>.</p>
+                            <p class="mb-0">© 2019-20 Bông Hand. Design with <i class="mdi mdi-heart text-danger"></i> by <a href="" target="_blank" class="text-reset">Bông Hand</a>.</p>
                         </div>
                     </div><!--end col-->
 

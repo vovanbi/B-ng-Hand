@@ -11,11 +11,10 @@
                 <div class="row">
                     <div class="col-lg-5">
                         <div class="slider slider-for">
-                            <div><img src="{{ asset(pare_url_file($product->images[0]->i_avatar)) }}" class="img-fluid rounded" alt=""></div>    
+                            <div>
+                                <img src="{{ asset('uploads/'.$product->images[0]->pi_avatar) }}" class="img-fluid rounded" alt="">
+                            </div>    
                         </div>
-                        <!-- <div class="slider slider-nav">  
-                            <div><img src="{{ asset(pare_url_file($product->images[0]->i_avatar)) }}" class="img-fluid" alt=""></div>
-                        </div> -->
                     </div><!--end col-->
 
                     <div class="col-lg-7 mt-4 mt-lg-0 pt-2 pt-lg-0">

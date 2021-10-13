@@ -79,7 +79,7 @@
                                         @foreach($products as $product)
                                         <li class="media align-items-center mt-2">
                                             <a href="{{ route('get.detail.product',$product->pro_slug) }}">
-                                                <img src="{{ asset(pare_url_file($product->images[0]->i_avatar)) }}" class="img-fluid avatar avatar-small rounded shadow" style="height: auto;" alt="">
+                                                <img src="{{ asset('uploads/'.$product->images[0]->pi_avatar) }}" class="img-fluid avatar avatar-small rounded shadow" style="height: auto;" alt="">
                                             </a>
                                             <div class="content ml-3">
                                                 <a href="{{ route('get.detail.product',$product->pro_slug) }}" class="text-dark h6 text-cart" style="width: 164px;">{{ $product->pro_name }}</a>
@@ -162,9 +162,9 @@
                                  
 
                                     <div class="shop-image position-relative overflow-hidden rounded shadow">
-                                        <a href="{{ route('get.detail.product',$product->pro_slug) }}"><img src="{{ asset(pare_url_file($product->images[0]->i_avatar)) }}" class="img-fluid" alt=""></a>
+                                        <a href="{{ route('get.detail.product',$product->pro_slug) }}"><img src="{{ asset('uploads/'.$product->images[0]->pi_avatar) }}" class="img-fluid" alt=""></a>
                                         <a href="{{ route('get.detail.product',$product->pro_slug) }}" class="overlay-work">
-                                        <img src="{{ asset(pare_url_file($product->images[1]->i_avatar)) }}" class="img-fluid" alt="">
+                                        <img src="{{ asset('uploads/'.$product->images[1]->pi_avatar) }}" class="img-fluid" alt="">
                                         </a>
                                         <ul class="list-unstyled shop-icons">
                                             <li><a href="{{ route('get.like.product',$product->id)}}" class="btn btn-icon btn-pills btn-soft-danger"><i data-feather="heart" class="icons"></i></a></li>

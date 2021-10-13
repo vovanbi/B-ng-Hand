@@ -62,6 +62,11 @@ class AdminProductController extends Controller
 
         if($requestProduct->hasFile('avatar'))
         {
+            foreach ($product->images as $key => $value) {
+                $unlink= 'uploads/'.$value->pi_avatar;
+                unlink($unlink);
+                $value->delete();
+            }
             foreach ($requestProduct->avatar as $key => $value) {
                 $name = date("y-m-d-h-m-s", time()) .'_'. $value->getClientOriginalName();
                 $value->move(public_path().'/uploads', $name);

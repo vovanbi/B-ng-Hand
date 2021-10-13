@@ -36,12 +36,12 @@
                     <div class="col-md-5">
                         <div class="slider slider-for">
                             @foreach($productDetail->images as $item)
-                            <div><img src="{{ asset(pare_url_file($item->i_avatar)) }}" class="img-fluid rounded" alt=""></div>
+                            <div><img src="{{ asset('uploads/'.$item->pi_avatar) }}" class="img-fluid rounded" alt=""></div>
                             @endforeach       
                         </div>
                         <div class="slider slider-nav">
                             @foreach($productDetail->images as $item)
-                            <div><img src="{{ asset(pare_url_file($item->i_avatar)) }}" class="img-fluid" alt=""></div>
+                            <div><img src="{{ asset('uploads/'.$item->pi_avatar) }}" class="img-fluid" alt=""></div>
                             @endforeach
                         </div>
                     </div><!--end col-->
@@ -154,7 +154,7 @@
                                                             @if($rating->ra_user_id == 0)
                                                                 {{ asset('image/unnamed.png') }}
                                                             @else
-                                                                {{ asset(pare_url_file(get_data_user('web','avatar'))) }} 
+                                                                {{ asset('image/unnamed.png') }} 
                                                             @endif"
                                                             class="img-fluid avatar avatar-md-sm rounded-circle shadow" alt="img">
                                                         </a>
@@ -260,7 +260,7 @@
                                                         <label>Họ Tên <span class="text-danger">*</span></label>
                                                         <div class="position-relative">
                                                             <i data-feather="user" class="fea icon-sm icons"></i>
-                                                            <input id="name" name="name" type="text" placeholder="Name" class="form-control pl-5" required="" value="{{ get_data_user('web','name') }}">
+                                                            <input id="name" name="name" type="text" placeholder="Name" class="form-control pl-5" required="" value="{{ auth()->user() ? auth()->user()->name : ''}}">
                                                         </div>
                                                     </div>
                                                 </div><!--end col-->
@@ -270,7 +270,7 @@
                                                         <label>Email <span class="text-danger">*</span></label>
                                                         <div class="position-relative">
                                                             <i data-feather="mail" class="fea icon-sm icons"></i>
-                                                            <input id="email" type="email" placeholder="Email" name="email" class="form-control pl-5" required="" value="{{ get_data_user('web','email') }}">
+                                                            <input id="email" type="email" placeholder="Email" name="email" class="form-control pl-5" required="" value="{{ auth()->user() ? auth()->user()->email : ''}}">
                                                         </div>
                                                     </div>
                                                 </div><!--end col-->
@@ -327,9 +327,11 @@
                                       @endif
                                  
                                 <div class="shop-image position-relative overflow-hidden rounded shadow">
-                                    <a href="{{ route('get.detail.product',$product->pro_slug) }}"><img src="{{ asset(pare_url_file($product->images[0]->i_avatar)) }}" class="img-fluid" alt=""></a>
+                                    <a href="{{ route('get.detail.product',$product->pro_slug) }}">
+                                        <img src="{{ asset('uploads/'.$product->images[0]->pi_avatar) }}" class="img-fluid" alt="">
+                                    </a>
                                     <a href="{{ route('get.detail.product',$product->pro_slug) }}" class="overlay-work">
-                                        <img src="{{ asset(pare_url_file($product->images[1]->i_avatar)) }}" class="img-fluid" alt="">
+                                        <img src="{{ asset('uploads/'.$product->images[1]->pi_avatar) }}" class="img-fluid" alt="">
                                     </a>
                                     <ul class="list-unstyled shop-icons">
                                         <li><a href="{{ route('get.like.product',$product->id)}}" class="btn btn-icon btn-pills btn-soft-danger"><i data-feather="heart" class="icons"></i></a></li>

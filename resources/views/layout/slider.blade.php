@@ -6,8 +6,8 @@
                         <div class="row align-items-center mt-5">
                             <div class="col-lg-7 col-md-7">
                                 <div class="title-heading mt-4">                                    
-                                    <h1 class="display-4 title-white font-weight-bold mb-3">ShoesShop <br> </h1>
-                                    <p class="para-desc text-muted para-dark">Chuyên các loại giày thể thao.</p>
+                                    <h1 class="display-4 title-white font-weight-bold mb-3">Bông Hand <br> </h1>
+                                    <p class="para-desc text-muted para-dark">Chuyên các loại đồ thời trang.</p>
                                     <div class="mt-4">
                                         <a href="{{ route('get.list.product') }}" class="btn btn-soft-primary">Xem bộ sưu tập</a>
                                     </div>
@@ -21,8 +21,8 @@
                         <div class="row align-items-center mt-5">
                             <div class="col-lg-7 col-md-7">
                                 <div class="title-heading mt-4">                                    
-                                    <h1 class="display-4 title-white font-weight-bold mb-3">ShoesShop <br> </h1>
-                                    <p class="para-desc text-muted para-dark">Chuyên các loại giày thể thao.</p>
+                                    <h1 class="display-4 title-white font-weight-bold mb-3">Bông Hand <br> </h1>
+                                    <p class="para-desc text-muted para-dark">Chuyên các loại đồ thời trang.</p>
                                     <div class="mt-4">
                                         <a href="{{ route('get.list.product') }}" class="btn btn-soft-primary">Xem bộ sưu tập</a>
                                     </div>
@@ -36,8 +36,8 @@
                         <div class="row align-items-center mt-5">
                             <div class="col-lg-7 col-md-7">
                                 <div class="title-heading mt-4">                                    
-                                    <h1 class="display-4 title-white font-weight-bold mb-3">ShoesShop <br> </h1>
-                                    <p class="para-desc text-muted para-dark">Chuyên các loại giày thể thao.</p>
+                                    <h1 class="display-4 title-white font-weight-bold mb-3">Bông Hand <br> </h1>
+                                    <p class="para-desc text-muted para-dark">Chuyên các loại đồ thời trang.</p>
                                     <div class="mt-4">
                                         <a href="{{ route('get.list.product') }}" class="btn btn-soft-primary">Xem bộ sưu tập</a>
                                     </div>

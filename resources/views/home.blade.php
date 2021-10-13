@@ -7,7 +7,7 @@
                 <div class="col-md-4">
                     <div class="py-5 rounded shadow" style="background: url('images/shop/fea1.jpg') top center;">
                         <div class="p-4">
-                            <h3>Giày Thể Thao <br> Nữ</h3>
+                            <h3>Thời Trang <br> Nữ</h3>
                             <a href="{{route('get.female.product','female')}}" class="btn btn-sm btn-soft-primary mt-2">Xem Ngay</a>
                         </div>
                     </div>
@@ -16,7 +16,7 @@
                 <div class="col-md-4 mt-4 pt-2 mt-sm-0 pt-sm-0">
                     <div class="py-5 rounded shadow" style="background: url('images/shop/fea2.jpg') top center;">
                         <div class="p-4">
-                            <h3>Giày Thể Thao <br> Nam</h3>
+                            <h3>Thời Trang <br> Nam</h3>
                             <a href="{{ route('get.male.product','male')}}" class="btn btn-sm btn-soft-primary mt-2">Xem Ngay</a>
                         </div>
                     </div>
@@ -25,7 +25,7 @@
                 <div class="col-md-4 mt-4 pt-2 mt-sm-0 pt-sm-0">
                     <div class="py-5 rounded shadow" style="background: url('images/shop/fea3.jpg') top center;">
                         <div class="p-4">
-                            <h3>Giày Thể Thao <br> Nam/Nữ</h3>
+                            <h3>Thời Trang <br> Nam/Nữ</h3>
                             <a href="{{ route('get.other.product','other')}}" class="btn btn-sm btn-soft-primary mt-2">Xem Ngay</a>
                         </div>
                     </div>
@@ -49,9 +49,11 @@
                             <div class="card shop-list border-0 position-relative m-2">
                                 <div class="ribbon ribbon-left ribbon-danger overflow-hidden"><span class="text-center d-block shadow small h6">Hot</span></div>
                                 <div class="shop-image position-relative overflow-hidden rounded shadow">
-                                    <a href="{{ route('get.detail.product',$product->pro_slug) }}"><img src="{{ asset(($product->images[0]->i_avatar)) }}" class="img-fluid" alt=""></a>
+                                    <a href="{{ route('get.detail.product',$product->pro_slug) }}">
+                                        <img src="{{ asset('uploads/'.$product->images[0]->pi_avatar) }}" class="img-fluid" alt="">
+                                    </a>
                                     <a href="{{ route('get.detail.product',$product->pro_slug) }}" class="overlay-work">
-                                        <img src="{{ asset(($product->images[1]->i_avatar)) }}" class="img-fluid" alt="">
+                                        <img src="{{ asset('uploads/'.$product->images[1]->pi_avatar) }}" class="img-fluid" alt="">
                                     </a>
                                     <ul class="list-unstyled shop-icons">
                                         <li><a href="{{ route('get.like.product',$product->id)}}" class="btn btn-icon btn-pills btn-soft-danger"><i data-feather="heart" class="icons"></i></a></li>
@@ -100,10 +102,10 @@
                 <div class="row">
                     @foreach($categories as $category)
                     <div class="col-lg-2 col-md-4 col-6 mt-4 pt-2">
-                        <div class="card explore-feature border-0 rounded text-center bg-white">
+                        <div class="card explore-feature border-0 rounded text-center">
                             <div class="card-body">
                                 <div class="icon rounded-circle shadow-lg d-inline-block h2">
-                                    <img src="{{asset('')}}images/category/{{$category->c_avatar}}" class="img-fluid" alt="">
+                                    <img src="{{asset('uploads/category/'.$category->c_avatar)}}" class="img-fluid" alt="">
                                 </div>
                                 
                                 <div class="content mt-3">
@@ -131,9 +133,11 @@
                         <div class="card shop-list border-0 position-relative">
                             <div class="ribbon ribbon-left ribbon-primary overflow-hidden"><span class="text-center d-block shadow small h6">Selling</span></div>
                             <div class="shop-image position-relative overflow-hidden rounded shadow">
-                                <a href="{{ route('get.detail.product',$product->pro_slug) }}"><img src="{{ asset(($product->images[0]->i_avatar)) }}" class="img-fluid" alt=""></a>
+                                <a href="{{ route('get.detail.product',$product->pro_slug) }}">
+                                    <img src="{{ asset('uploads/'.$product->images[0]->pi_avatar) }}" class="img-fluid" alt="">
+                                </a>
                                 <a href="{{ route('get.detail.product',$product->pro_slug) }}" class="overlay-work">
-                                    <img src="{{ asset(($product->images[1]->i_avatar)) }}" class="img-fluid" alt="">
+                                    <img src="{{ asset('uploads/'.$product->images[1]->pi_avatar) }}" class="img-fluid" alt="">
                                 </a>
                                 <ul class="list-unstyled shop-icons">
                                     <li><a href="{{ route('get.like.product',$product->id)}}" class="btn btn-icon btn-pills btn-soft-danger"><i data-feather="heart" class="icons"></i></a></li>
@@ -177,7 +181,7 @@
                         <div id="owl-fade" class="owl-carousel owl-theme">
                             <div class="customer-testi text-center mx-4">                              
                                 <p class="text-dark para-dark h5 font-weight-normal font-italic mt-4">“Hãy mang những giấc mơ của bạn lên đôi chân để dẫn lối giấc mơ đó thành hiện thực.”</p>
-                                <h6 class="text-dark title-dark">-- ShoesShop --</h6>
+                                <h6 class="text-dark title-dark">-- Bông Hand --</h6>
                             </div><!--end customer testi-->
                             
                             <div class="customer-testi text-center mx-4">                              

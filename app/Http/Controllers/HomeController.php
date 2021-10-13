@@ -26,8 +26,8 @@ class HomeController extends FrontendController
         {
             $product = Product::find($id);
             $product->pro_view +=1;
-            $product->save();
             $html = view('layout.viewProduct',compact('product'))->render();
+            $product->save();
             return \response()->json($html);
         }
 
