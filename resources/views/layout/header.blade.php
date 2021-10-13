@@ -4,7 +4,7 @@
                 <!-- Logo container-->
                 <div>
                     <a class="logo" href="{{ route('home') }}">
-                        <img src="{{ asset('') }}images/logo.png" height="50" alt="">
+                        <img src="{{ asset('') }}images/logo.png" height="70" alt="">
                     </a>
                 </div>                 
                 <ul class="buy-button list-inline mb-0">
@@ -22,12 +22,12 @@
                     </li> -->
                     <li class="list-inline-item mb-0 pr-1">
                         <div class="dropdown">
-                            <button type="button" class="btn btn-icon btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="uil uil-shopping-cart align-middle icons"></i></button>
+                            <button type="button" class="btn btn-icon btn-black dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="uil uil-shopping-cart align-middle icons"></i></button>
                             <div class="dropdown-menu dropdown-menu-right bg-white shadow rounded border-0 mt-3 p-4" style="width: 300px;">
                                 <div class="pb-4">
                                     @foreach(\Cart::content() as $product)
                                     <div class="media align-items-center mt-4">
-                                        <img src="{{ asset(pare_url_file($product->options->avatar)) }}" class="shadow rounded" style="max-height: 64px;" alt="">
+                                        <img src="{{ asset($product->options->avatar) }}" class="shadow rounded" style="max-height: 64px;" alt="">
                                         <div class="media-body text-left ml-3">
                                             <h6 class="text-dark mb-0 text-cart">{{ $product->name }}</h6>
                                             <p class="text-muted mb-0">{{ $product->price }} X {{$product->qty}}</p>
@@ -54,10 +54,10 @@
                     </li> -->
                     <li class="list-inline-item mb-0">
                         <div class="dropdown dropdown-primary">
-                            <button type="button" class="btn btn-icon btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="uil uil-user align-middle icons"></i></button>
-                            @if(get_data_user('web'))                           
+                            <button type="button" class="btn btn-icon btn-black dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="uil uil-user align-middle icons"></i></button>
+                            @if(\Auth::check())                           
                             <div class="dropdown-menu dropdown-menu-right bg-white shadow rounded border-0 mt-3 py-3" style="width: 200px;">
-                                <a class="dropdown-item text-dark" href="{{ route('get.user') }}"><i class="uil uil-user align-middle mr-1"></i> Tài khoản</a>
+                                <a class="dropdown-item text-dark" href="{{ route('get.user') }}"><i class="uil uil-user align-middle mr-1"></i> {{ auth()->user()->name }}</a>
     
                                 <div class="dropdown-divider my-3 border-top"></div>
                                 <a class="dropdown-item text-dark" href="{{ route('get.logout') }}"><i class="uil uil-sign-out-alt align-middle mr-1"></i> Đăng xuất</a>
@@ -97,7 +97,7 @@
                                     <ul>   
                                         @if (isset($categories))
                                         @foreach($categories as $category)
-                                            <li><a href="{{ route('get.product.category',$category->c_slug) }}">{{ $category->c_name }}</a></li>
+                                            <li><a href="{{ route('get.product.category',$category->c_slug) }}"><img src="{{ asset('uploads/category/'.$category->c_avatar)}}" class="img-fluid" width="50px" height="50px" alt=""> {{ $category->c_name }}</a></li>
                                         @endforeach
                                         @endif                              
                                     </ul>

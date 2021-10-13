@@ -40,7 +40,7 @@
                                             </div>
                                         </div><!--end col-->
 
-                                        <div class="col-lg-12">
+                                        <!-- <div class="col-lg-12">
                                             <div class="d-flex justify-content-between">
                                                 <div class="form-group">
                                                     <div class="custom-control custom-checkbox">
@@ -50,9 +50,9 @@
                                                 </div>
                                                 <p class="forgot-pass mb-0"><a href="auth-re-password.html" class="text-dark font-weight-bold">Forgot password ?</a></p>
                                             </div>
-                                        </div><!--end col-->
+                                        </div> --><!--end col-->
 
-                                        <div class="col-lg-12 mb-0">
+                                        <div class="col-lg-12 mb-0 mt-3">
                                             <button type="submit" class="btn btn-primary btn-block">Đăng nhập</button>
                                         </div><!--end col-->
 

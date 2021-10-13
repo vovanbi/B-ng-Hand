@@ -549,6 +549,13 @@ a.text-footer:hover, a.text-footer:focus {
   -webkit-box-shadow: 0 3px 5px 0 rgba(241, 116, 37, 0.3);
           box-shadow: 0 3px 5px 0 rgba(241, 116, 37, 0.3);
 }
+.btn-black {
+  background-color: #000 !important;
+  border: 1px solid #000 !important;
+  color: #ffffff !important;
+  -webkit-box-shadow: 0 3px 5px 0 rgba(199, 0, 174, 0.5);
+          box-shadow: 0 3px 5px 0 rgba(199, 0, 174, 0.5);
+}
 
 .btn-warning:hover, .btn-warning:focus, .btn-warning:active, .btn-warning.active, .btn-warning.focus {
   background-color: #d55b0e !important;
@@ -1596,13 +1603,13 @@ button:not(:disabled) {
 
 .pagination .page-item .page-link:hover {
   color: #ffffff;
-  background: rgba(47, 85, 212, 0.9);
+  background: rgba(0, 0, 0, 0.7);
   border-color: rgba(47, 85, 212, 0.9);
 }
 
 .pagination .page-item.active .page-link {
   color: #ffffff;
-  background: #2f55d4 !important;
+  background: #000 !important;
   border-color: #2f55d4;
   cursor: not-allowed;
 }
@@ -2078,6 +2085,7 @@ body {
   overflow-x: hidden !important;
   font-size: 16px;
   color: #161c2d;
+  background-color: #fff3fa;
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
@@ -2522,7 +2530,7 @@ p {
 
 #topnav .navigation-menu > li > a {
   display: block;
-  color: #3c4858;
+  color: #000;
   font-size: 13px;
   background-color: transparent !important;
   font-weight: 700;
@@ -2600,7 +2608,7 @@ p {
 }
 
 #topnav.nav-sticky {
-  background: #ffffff;
+  background: #ffddf3;
   -webkit-box-shadow: 0 0 3px rgba(60, 72, 88, 0.15);
           box-shadow: 0 0 3px rgba(60, 72, 88, 0.15);
 }
@@ -3816,14 +3824,14 @@ p {
 
 .owl-theme .owl-dots .owl-dot span {
   border-radius: 3px;
-  background: rgba(47, 85, 212, 0.5) !important;
+  background: rgba(0, 0, 0, 0.5) !important;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
 
 .owl-theme .owl-dots .owl-dot.active span,
 .owl-theme .owl-dots.clickable .owl-dot:hover span {
-  background: #2f55d4 !important;
+  background: #000 !important;
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
 }
@@ -5219,7 +5227,7 @@ p {
 }
 
 .footer {
-  background: #202942;
+  background: black;
   padding: 60px 0;
   position: relative;
   color: #adb5bd;

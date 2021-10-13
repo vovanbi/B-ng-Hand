@@ -7,7 +7,7 @@
                 <form action="{{ route('updateInfo') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="mt-3 text-md-left text-center d-sm-flex">
-                        <img id="out_img" src="{{ get_data_user('web','avatar')!=null ? asset(pare_url_file(get_data_user('web','avatar'))) : asset('image/unnamed.png') }}" class="avatar float-md-left avatar-medium rounded-circle shadow mr-md-4" alt="">                                             
+                        <img id="out_img" src="{{ auth()->user()->avatar!=null ? asset(pare_url_file(auth()->user()->avatar)) : asset('image/unnamed.png') }}" class="avatar float-md-left avatar-medium rounded-circle shadow mr-md-4" alt="">                                             
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Thêm Ảnh</label>

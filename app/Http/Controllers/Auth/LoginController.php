@@ -72,6 +72,7 @@ class LoginController extends Controller
 
     protected function loginOrCreateAccount($providerUser, $driver)
     {
+        dd($providerUser);
         // check for already has account
         $user = User::where('email', $providerUser->getEmail())->first();
 
@@ -112,7 +113,10 @@ class LoginController extends Controller
     {
         $credentials = $request->only('email','password');
         if(\Auth::attempt($credentials))
-        {
+        { 
+            if(Auth::user()->type==0){
+                return redirect()->route('admin.home')->with('success','Đăng nhập thành công!');
+            }
             return redirect()->route('home')->with('success','Đăng nhập thành công!');
         }
 
