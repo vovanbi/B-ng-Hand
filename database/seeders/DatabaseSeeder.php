@@ -39,6 +39,5 @@ class DatabaseSeeder extends Seeder
             'c_slug' => 'ao-khoac',
             'c_home' => 1,
         ]);
-
     }
 }
