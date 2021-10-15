@@ -57,7 +57,7 @@
                                         <td class="text-center">{{ $stt }}</td>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <img src="{{ asset(pare_url_file($product->options->avatar)) }}" class="img-fluid avatar avatar-small rounded shadow" style="height:auto;" alt="">
+                                                <img src="{{ asset('uploads/'.$product->options->avatar) }}" class="img-fluid avatar avatar-small rounded shadow" style="height:auto;" alt="">
                                                 <h6 class="mb-0 ml-3">{{ $product->name }}</h6>
                                             </div>
                                         </td>

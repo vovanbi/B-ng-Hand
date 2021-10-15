@@ -40,5 +40,8 @@ class Article extends Model
     {
         return data_get($this->hot,$this->a_hot,'[N\A]');
     }
-    
+    public function comments()
+    {
+        return $this->hasMany(Comment::class,'co_article_id');
+    }
 }

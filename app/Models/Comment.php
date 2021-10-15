@@ -9,4 +9,9 @@ class Comment extends Model
 {
 	protected $table ='comments';
     use HasFactory;
+
+    public function article()
+    {
+        return $this->belongsTo(Article::class,'co_article_id');
+    }
 }
