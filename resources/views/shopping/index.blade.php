@@ -63,9 +63,10 @@
                                         </td>
                                         <td>
                                             <select style="width: 68px;padding: 0px;" class="form-control size" name="size">
-                                            <?php for($i=35;$i<=45;$i++):?>
-                                                <option value="<?php echo $i ?>" {{ $product->options->size==$i ? 'selected':'' }}><?php echo $i ?></option>
-                                              <?php endfor ?>
+                                                <option value="S" {{ $product->options->size=='S' ? 'selected':'' }}>S</option>
+                                                <option value="M" {{ $product->options->size=='M' ? 'selected':'' }}>M</option>
+                                                <option value="L" {{ $product->options->size=='L' ? 'selected':'' }}>L</option>
+                                                <option value="XL" {{ $product->options->size=='XL' ? 'selected':'' }}>XL</option>
                                             </select>
                                         </td>
                                         <td class="text-center">{{ number_format($product->price,0,',','.') }} đ</td>

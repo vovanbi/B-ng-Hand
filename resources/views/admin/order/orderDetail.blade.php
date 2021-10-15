@@ -5,6 +5,7 @@
             <th>Stt</th>
             <th>Tên sản phẩm</th>
             <th>Hình ảnh</th>
+            <th>Size</th>
             <th>Giá</th>
             <th>Số lượng</th>
             <th>Tổng tiền</th>
@@ -12,18 +13,17 @@
         </thead>
         <tbody>
         @foreach($ordersDetail as $key => $orderDetail)
-        <?php $stt=1 ?>
             <tr>
-                <td><?php echo $stt ?></td>
+                <td>{{ $loop->iteration }}</td>
                 <td><a href="{{ route('get.detail.product',[Str::slug($orderDetail->product->pro_name),$orderDetail->or_product_id]) }}" target="_blank">{{ $orderDetail->product->pro_name }}</a></td>
                 <td>
-                    <img style="width: 80px;height: 60px;" src="{{ asset(pare_url_file($orderDetail->product->images[0]->i_avatar)) }}">
+                    <img style="width: 80px;height: 60px;" src="{{ asset('uploads/'.$orderDetail->product->images[0]->pi_avatar) }}">
                 </td>
+                <td>{{ $orderDetail->size }}</td>
                 <td>{{ number_format($orderDetail->od_price,0,',','.') }} đ</td>
                 <td>{{ $orderDetail->od_qty }}</td>
                 <td>{{ number_format($orderDetail->od_qty * $orderDetail->od_price,0,',','.') }} đ</td>
             </tr>
-        <?php $stt++ ?>
         @endforeach
         </tbody>
     </table>

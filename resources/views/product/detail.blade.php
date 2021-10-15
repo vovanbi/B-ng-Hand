@@ -47,7 +47,7 @@
                     </div><!--end col-->
 
                     <div class="col-md-7 mt-4 mt-sm-0 pt-2 pt-sm-0">
-                        <ul class="list-unstyled mb-0 text-center text-muted">
+                        <ul class="ml-5 list-unstyled mb-0 text-muted">
                             <li class="list-inline-item mr-2"><i class="mdi mdi-heart-outline mr-1"></i>{{ $productDetail->pro_heart }} Lượt thích</li>
                             <li class="list-inline-item mr-2"><i class="mdi mdi-comment-outline mr-1"></i>{{ $productDetail->pro_total_rating }} Đánh giá</li>
                             <li class="list-inline-item"><i class="mdi mdi-eye-outline mr-1"></i>{{ $productDetail->pro_view }} Lượt xem</li>

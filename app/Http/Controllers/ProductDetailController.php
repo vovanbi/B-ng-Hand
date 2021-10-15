@@ -63,13 +63,13 @@ class ProductDetailController extends FrontendController
             'price'=> $price,
             'weight' => 550,          
             'options'=> [
-                'avatar'=> $product->images[0]->i_avatar,
+                'avatar'=> $product->images[0]->pi_avatar,
                 'sale'=> $product->pro_sale,
                 'price_old'=> $product->pro_price, 
-                'size' =>40, 
+                'size' =>'M', 
                 'number' => $product->pro_number,   
                 'slug' => $product->pro_slug,
-                'img' => asset(pare_url_file($product->images[0]->i_avatar)),
+                'img' => asset($product->images[0]->pi_avatar),
             ],
         ]);
         return redirect()->route('get.list.cart');
