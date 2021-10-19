@@ -27,6 +27,7 @@
                     <th>Tiêu đề</th>
                     <th>Họ tên</th>
                     <th>Email</th>
+                    <th>Số điện thoại</th>
                     <th>Nội dung</th>
                     <th>Trạng thái</th>
                     <th>Thao tác</th>
@@ -40,6 +41,7 @@
                             <td>{{ $contact->c_title }}</td>
                             <td>{{ $contact->c_name }}</td>
                             <td>{{ $contact->c_email }}</td>
+                            <td>{{ $contact->c_phone }}</td>
                             <td>{{ $contact->c_content }}</td>
                             <td>
                                 <a href="{{ route('admin.action.contact',['status',$contact->id]) }}" class="label {{ $contact->getStatus($contact->c_status)['class'] }}">{{ $contact->getStatus($contact->c_status)['name'] }}</a>

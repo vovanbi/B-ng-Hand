@@ -7,7 +7,7 @@
                     <div class="col-12 text-center">
                         <div class="section-title mb-4 pb-2">
                             <h4 class="title mb-4">Liên Hệ Với Chúng Tôi</h4>
-                            <p class="text-muted para-desc mx-auto mb-0">Nói với chúng tôi những thắc mắc mà bạn gặp phải trên <span class="text-primary font-weight-bold">ShoesShop</span> để được hỗ trợ nhanh nhất.</p>
+                            <p class="text-muted para-desc mx-auto mb-0">Nói với chúng tôi những thắc mắc mà bạn gặp phải trên <span class="text-primary font-weight-bold">Bông Hand</span> để được hỗ trợ nhanh nhất.</p>
                         </div>
                     </div>
                     <div class="col-12 p-0">
@@ -34,7 +34,7 @@
                                                 <label>Họ Tên <span class="text-danger">*</span></label>
                                                 <div class="position-relative">
                                                     <i data-feather="user" class="fea icon-sm icons"></i>
-                                                    <input name="c_name" id="name" value="{{auth()->check() ? auth()->user()->name : '' }}" type="text" class="form-control pl-5" placeholder="First Name :">
+                                                    <input required="" name="c_name" id="name" value="{{auth()->check() ? auth()->user()->name : '' }}" type="text" class="form-control pl-5" placeholder="First Name :">
                                                 </div>
                                             </div>
                                         </div><!--end col-->
@@ -43,7 +43,7 @@
                                                 <label>Email <span class="text-danger">*</span></label>
                                                 <div class="position-relative">
                                                     <i data-feather="mail" class="fea icon-sm icons"></i>
-                                                    <input name="c_email" id="email" value="{{auth()->check() ? auth()->user()->email : '' }}" type="email" class="form-control pl-5" placeholder="Your Email :">
+                                                    <input required="" name="c_email" id="email" value="{{auth()->check() ? auth()->user()->email : '' }}" type="email" class="form-control pl-5" placeholder="Your Email :">
                                                 </div>
                                             </div> 
                                         </div><!--end col-->
@@ -52,7 +52,12 @@
                                                 <label>Số Điện Thoại <span class="text-danger">*</span></label>
                                                 <div class="position-relative">
                                                     <i data-feather="user" class="fea icon-sm icons"></i>
-                                                    <input name="c_phone" id="name" value="{{auth()->check() ? auth()->user()->phone : '' }}" type="text" class="form-control pl-5" placeholder="Your Phone :">
+                                                    <input required="" name="c_phone" id="name" value="{{auth()->check() ? auth()->user()->phone : '' }}" type="number" class="form-control pl-5" placeholder="Your Phone :">
+                                                    @if($errors->has('c_phone'))
+                                                        <span class="text-danger">
+                                                            {{ $errors->first('c_phone') }}
+                                                        </span>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div><!--end col-->
@@ -61,7 +66,7 @@
                                                 <label>Tiêu Đề <span class="text-danger">*</span></label>
                                                 <div class="position-relative">
                                                     <i data-feather="user" class="fea icon-sm icons"></i>
-                                                    <input name="c_title" id="name" type="text" class="form-control pl-5" placeholder="Title :">
+                                                    <input required="" name="c_title" id="name" type="text" class="form-control pl-5" placeholder="Title :">
                                                 </div>
                                             </div>
                                         </div><!--end col-->
@@ -70,7 +75,7 @@
                                                 <label>Nội Dung</label>
                                                 <div class="position-relative">
                                                     <i data-feather="message-circle" class="fea icon-sm icons"></i>
-                                                    <textarea name="c_content" id="comments" rows="4" class="form-control pl-5" placeholder="Your Message :"></textarea>
+                                                    <textarea required="" name="c_content" id="comments" rows="4" class="form-control pl-5" placeholder="Your Message :"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -89,7 +94,7 @@
                     <div class="col-lg-7 col-md-6 order-1 order-md-2">
                         <div class="title-heading ml-lg-4">
                             <h4 class="mb-4">Gửi thắc mắc cho chúng tôi</h4>
-                            <p class="text-muted">Nói bất cứ điều về <span class="text-primary font-weight-bold">ShoesShop </span> chúng tôi sẽ cố gắng giải thích cho bạn trong thời gian sớm nhất.</p>
+                            <p class="text-muted">Nói bất cứ điều về <span class="text-primary font-weight-bold">Bông Hand </span> chúng tôi sẽ cố gắng giải thích cho bạn trong thời gian sớm nhất.</p>
                             <div class="media contact-detail align-items-center mt-3">
                                 <div class="icon">
                                     <i data-feather="mail" class="fea icon-m-md text-dark mr-3"></i>
