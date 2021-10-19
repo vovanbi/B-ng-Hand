@@ -78,6 +78,10 @@ class AdminCategoryController extends Controller
         $category->c_slug = Str::slug($requestCategory->name);
         if($requestCategory->hasFile('avatar'))
         {
+            if($id!=''){
+                $unlink= 'uploads/category/'.$category->c_avatar;
+                unlink($unlink);
+            }
             $name = date("y-m-d-h-m-s", time()) .'_'. $requestCategory->avatar->getClientOriginalName();
             $requestCategory->avatar->move(public_path().'/uploads/category', $name);
             //save image

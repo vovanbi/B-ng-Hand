@@ -45,7 +45,7 @@
                                 <a href="{{ route('admin.action.contact',['status',$contact->id]) }}" class="label {{ $contact->getStatus($contact->c_status)['class'] }}">{{ $contact->getStatus($contact->c_status)['name'] }}</a>
                             </td>
                             <td>
-                                <a class="btn btn-danger" style="font-size: 12px;" href="{{ route('admin.action.contact',['delete',$contact->id]) }}"><i class="fa fa-pen"></i> Xóa</a>
+                                <a class="btn btn-danger" style="font-size: 12px;" href="{{ route('admin.action.contact',['delete',$contact->id]) }}" onclick="return confirm('Bạn chắc chắn muốn xóa mục này?');"><i class="fa fa-pen"></i> Xóa</a>
                             </td>
                         </tr>
                     @endforeach

@@ -45,8 +45,8 @@
                     <!-- BLog Start -->
                     <div class="col-lg-8 col-md-6">
                         <div class="card blog blog-detail border-0 shadow rounded">
-                            <img src="{{ asset(pare_url_file($article->a_avatar)) }}" class="img-fluid rounded-top" alt="">
                             <div class="card-body content">
+                                <strong>{{ $article->a_description }}</strong>
                                 {!! $article->a_content !!}
                             </div>
                         </div>
@@ -64,7 +64,7 @@
                                         <div class="card blog rounded border-0 shadow">
                                             <a href="{{ route('get.detail.article',$articleHot->a_slug) }}">
                                                 <div class="position-relative">                                       
-                                                    <img src="{{ asset(pare_url_file($articleHot->a_avatar)) }}" class="card-img-top rounded-top" alt="...">
+                                                    <img src="{{ asset('uploads/article/'.$articleHot->a_avatar) }}" class="card-img-top rounded-top" alt="...">
                                                 <div class="overlay rounded-top bg-dark"></div>
                                                 </div>
                                             </a>

@@ -27,7 +27,7 @@
                   @foreach($articlesHot as $articleHot)
 
                   <div class="clearfix post-recent">
-                      <div class="post-recent-thumb float-left"> <a href="{{ route('get.detail.article',$articleHot->a_slug) }}"> <img alt="img" src="{{ asset(pare_url_file($articleHot->a_avatar)) }}" class="img-fluid rounded"></a></div>
+                      <div class="post-recent-thumb float-left"> <a href="{{ route('get.detail.article',$articleHot->a_slug) }}"> <img alt="img" src="{{ asset('uploads/article/'.$articleHot->a_avatar) }}" class="img-fluid rounded"></a></div>
                       <div class="post-recent-content float-left"><a href="{{ route('get.detail.article',$articleHot->a_slug) }}">{{ $articleHot->a_name }}</a><span class="text-muted mt-2">{{ $articleHot->created_at->format('d-m-Y') }}</span></div>
                   </div>
                   @endforeach

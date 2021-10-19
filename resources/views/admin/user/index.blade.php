@@ -57,7 +57,7 @@
                   <td>{{$user->phone}}</td>
                   <td>{{$user->provider}}</td>
                   <td>
-                    <a class="btn btn-danger" style="font-size: 12px;" href="{{ route('admin.action.user',['delete',$user->id]) }}"><i class="fa fa-trash"></i> Delete</a>
+                    <a class="btn btn-danger" style="font-size: 12px;" href="{{ route('admin.action.user',['delete',$user->id]) }}" onclick="return confirm('Bạn chắc chắn muốn xóa mục này?');"><i class="fa fa-trash"></i> Delete</a>
                   </td>
                 </tr>  
                     @endforeach
