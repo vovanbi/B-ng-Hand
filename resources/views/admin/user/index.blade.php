@@ -55,7 +55,7 @@
                   <td>{{$user->email}}</td>
                   <td>{{$user->address}}</td>
                   <td>{{$user->phone}}</td>
-                  <td>{{$user->provider}}</td>
+                  <td>{{$user->provider ? 'Google' : 'Mặc Định'}}</td>
                   <td>
                     <a class="btn btn-danger" style="font-size: 12px;" href="{{ route('admin.action.user',['delete',$user->id]) }}" onclick="return confirm('Bạn chắc chắn muốn xóa mục này?');"><i class="fa fa-trash"></i> Delete</a>
                   </td>

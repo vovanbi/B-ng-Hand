@@ -14,7 +14,7 @@ class AdminUserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::where('type','=',1)->get();
         $viewData = [
             'users'=>$users,
         ];
@@ -29,12 +29,15 @@ class AdminUserController extends Controller
             switch ($action)
             {
                 case 'delete':
+                    $unlink= 'uploads/user/'.$user->avatar;
+                    unlink($unlink);
                     $user->delete();
+                    $messages = 'Xoá thành công';
                     break;
             }
 
         }
-        return redirect()->back();
+        return redirect()->back()->with('success',$messages);
     }
     
 }

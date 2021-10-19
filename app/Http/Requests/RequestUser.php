@@ -25,7 +25,7 @@ class RequestUser extends FormRequest
     {
         return [
             'email'=>'required | email:rfc,dns|unique:users,email,'.$this->id,
-            'phone'=>'required | size:10',
+            'phone'=>'size:10',
             'password'=>'required | min:8',
             'name'=>'required',
             'address'=>'required',
