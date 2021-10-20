@@ -65,7 +65,7 @@ Route::get('/', [HomeController::class,'index'])->name('home');
 //product
 
 Route::get('danh-muc/{slug}',[CategoryController::class,'getListProduct'])->name('get.product.category');
-Route::post('san-pham/search', [CategoryController::class,'getSearch'])->name('get.search.product');
+Route::get('san-pham/search', [CategoryController::class,'getSearch'])->name('get.search.product');
 Route::get('san-pham', [CategoryController::class,'getListProduct'])->name('get.list.product');
 Route::get('san-pham/{slug}', [ProductDetailController::class,'productDetail'])->name('get.detail.product');
 

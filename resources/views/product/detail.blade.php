@@ -150,7 +150,7 @@
                                             <li class="mt-4">
                                                 <div class="d-flex justify-content-between">
                                                     <div class="media align-items-center">
-                                                        <a class="pr-3" href="#">
+                                                        <a class="pr-3">
                                                             <img src="
                                                             @if($rating->user->avatar)
                                                                 {{asset('uploads/user/'.$rating->user->avatar)}}
@@ -160,7 +160,7 @@
                                                             class="img-fluid avatar avatar-md-sm rounded-circle shadow" alt="img">
                                                         </a>
                                                         <div class="commentor-detail">
-                                                            <h6 class="mb-0"><a href="javascript:void(0)" class="media-heading text-dark">{{ $rating->ra_name }}</a></h6>
+                                                            <h6 class="mb-0"><a href="javascript:void(0)" class="media-heading text-dark">{{ $rating->user->name }}</a></h6>
                                                             <small class="text-muted">{{ $rating->created_at }}</small>
                                                         </div>
                                                     </div>

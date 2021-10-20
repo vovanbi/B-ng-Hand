@@ -86,4 +86,16 @@ class CategoryController extends FrontendController
             }
         }
     }
+    public function getSearch(Request $request)
+    {
+        $products = Product::where('pro_active',Product::STATUS_PUBLIC)->where('pro_name','like','%'.$request->search.'%');
+        $this->getFilter($request,$products);
+        $products=$products->paginate(6);
+        
+        $viewData = [
+            'products' => $products,
+            'query' => $request->query()
+        ];
+        return view('product.index',$viewData);
+    }
 }
