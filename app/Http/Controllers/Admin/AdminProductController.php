@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\RequestProduct;
 use App\Models\Category;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\Images;
 use Illuminate\Contracts\Support\Renderable;
@@ -96,7 +97,21 @@ class AdminProductController extends Controller
                     $product->save();
                     $messages = 'Cập nhật thành công';
                     break;
-                case 'delete':
+                case 'delete':            
+                    if($product->orders){
+                        foreach($product->orders->groupBy('id') as $key => $value){
+                            $orders = Order::find($key);
+                            foreach($orders->orderDetails as $value){
+                                $value->delete();
+                            }
+                            $orders->delete();
+                        }
+                    }
+                    if($product->rating){
+                        foreach ($product->rating as $key => $value) {
+                            $value->delete();
+                        }
+                    }
                     foreach ($product->images as $key => $value) {
                         $unlink= 'uploads/'.$value->pi_avatar;
                         unlink($unlink);

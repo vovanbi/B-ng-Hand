@@ -54,4 +54,9 @@ class Product extends Model
     {
         return $this->hasMany(Rating::class,'ra_product_id');
     }
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class,'order_detail', 'od_product_id', 'od_orders_id');
+
+    }
 }

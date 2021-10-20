@@ -30,11 +30,12 @@ class AdminRatingController extends Controller
             {
                 case 'delete':
                     $rating->delete();
+                    $messages = 'Xoá thành công';
                     break;
             }
 
         }
-        return redirect()->back();
+        return redirect()->back()->with('success',$messages);
     }
     
 }

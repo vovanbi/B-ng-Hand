@@ -46,11 +46,11 @@
                 @foreach($ratings as $rating) 
                 <tr>
                       <td>{{$rating->id}}</td>
-                      <td>{{isset($rating->product->pro_name) ? $rating->product->pro_name : '[N\A]' }}</td>
-                       <td>{{$rating->ra_name}}</td>
+                      <td>{{$rating->product->pro_name}}</td>
+                      <td>{{$rating->user->name}}</td>
                       <td>{{$rating->ra_content}}</td>   
                       <td>
-                            <a class="btn btn-danger" style="font-size: 12px;" href="{{ route('admin.action.rating',['delete',$rating->id]) }}" onclick="return confirm('Bạn chắc chắn muốn xóa mục này?');"><i class="fa fa-pen"></i> Xóa</a>
+                            <a class="btn btn-danger" style="font-size: 12px;" href="{{ route('admin.action.rating',['delete',$rating->id]) }}" onclick="return confirm('Bạn chắc chắn muốn xóa mục này?');"><i class="fa fa-trash"></i> Xóa</a>
                         </td>
                  </tr>  
                     @endforeach

@@ -96,6 +96,9 @@ class ShoppingCartController extends FrontendController
     public function getFormPayment()
     {
         $products = \Cart::content();
+        if($products->isEmpty()){
+            return redirect()->back()->with('danger','Giỏ hàng trống không thể thanh toán');
+        }
         return view('shopping.payment',compact('products'));
     }
 
@@ -192,6 +195,9 @@ class ShoppingCartController extends FrontendController
             }
         }              
         $products= \Cart::content();
+        if($products->isEmpty()){
+            return redirect()->back()->with('danger','Giỏ hàng trống không thể thanh toán');
+        }
         return view('shopping.payment_online',compact('products'));
     }
     public function savePayOnline(Request $request)

@@ -29,8 +29,23 @@ class AdminUserController extends Controller
             switch ($action)
             {
                 case 'delete':
-                    $unlink= 'uploads/user/'.$user->avatar;
-                    unlink($unlink);
+                    if($user->rating){
+                        foreach ($user->rating as $key => $value) {
+                            $value->delete();
+                        }
+                    }
+                    if($user->orders){
+                        foreach ($user->orders as $key => $value) {
+                            foreach($value->orderDetails as $key => $item){
+                                $item->delete();
+                            }
+                            $value->delete();
+                        }
+                    }
+                    if($user->avatar){
+                        $unlink= 'uploads/user/'.$user->avatar;
+                        unlink($unlink);
+                    }                   
                     $user->delete();
                     $messages = 'Xoá thành công';
                     break;

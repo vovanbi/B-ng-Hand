@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\User;
 use App\Models\Rating;
 use Illuminate\Support\Facades\View;
 use Gloudemans\Shoppingcart\Cart;
@@ -18,6 +19,22 @@ class ProductDetailController extends FrontendController
         	'pro_active' => Product::STATUS_PUBLIC,
         	'pro_slug' => $slug,
         ])->first();
+        
+        $checkRate = 0;
+        if(auth()->check()){
+            $orders = User::find(auth()->id())->orders->where('o_status','=',1);
+            foreach($orders as $order){
+                foreach($order->orderDetails as $orderDetail){
+                    if($orderDetail->od_product_id == $productDetail->id){
+                        $checkRate=1;
+                        break;                 
+                    }
+                }
+                if($checkRate==1){
+                    break;
+                }
+            }
+        }
 
         $productDetail->pro_view +=1;
         $productDetail->save();
@@ -37,7 +54,8 @@ class ProductDetailController extends FrontendController
             'averageStar' => isset($averageStar) ? $averageStar : 0,
         	'productDetail' => $productDetail,
         	'products' => $products,
-            'ratings' => $ratings
+            'ratings' => $ratings,
+            'checkRate' => $checkRate,
         ];
         return view('product.detail', $viewData);      
     }
