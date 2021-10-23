@@ -27,7 +27,7 @@ class RequestArticle extends FormRequest
             'a_name'=>'required | unique:articles,a_name,'.$this->id,
             'a_content'=>'required',
             'a_category_id'=>'required',
-
+            'avatar' => 'mimes:jpeg,jpg,png,gif', 
         ];
     }
     public function messages()
@@ -37,6 +37,7 @@ class RequestArticle extends FormRequest
             'a_name.unique'=>'Tên bài viết đã tồn tại',
             'a_content.required'=>'Trường này không được để trống',
             'a_category_id.required'=>'Trường này không được để trống',
+            'avatar.mimes'=>'Ảnh phải có dạng jpeg, jpg, png, gif',
         ];
     }
 }

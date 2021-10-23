@@ -28,7 +28,7 @@ class OrderDetailTest extends TestCase
 
         $this->assertInstanceOf(BelongsTo::class, $relation);
 
-        $this->assertEquals('order_detail.od_order_id', $relation->getQualifiedForeignKeyName());
+        $this->assertEquals('order_detail.od_orders_id', $relation->getQualifiedForeignKeyName());
 
         $this->assertEquals('orders.id', $relation->getQualifiedOwnerKeyName());
     }

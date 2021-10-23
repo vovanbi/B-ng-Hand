@@ -25,6 +25,7 @@ class RequestCategory extends FormRequest
     {
         return [
             'name'=>'required | unique:categories,c_name,'.$this->id,
+            'avatar' => 'mimes:jpeg,jpg,png,gif', 
         ];
     }
     public function messages()
@@ -32,6 +33,7 @@ class RequestCategory extends FormRequest
         return [
             'name.required'=>'Trường này không được để trống',
             'name.unique'=>'Tên danh mục đã tồn tại',
+            'avatar.mimes'=>'Ảnh phải có dạng jpeg, jpg, png, gif',
         ];
     }
 }

@@ -30,6 +30,7 @@ class RequestUser extends FormRequest
             'name'=>'required',
             'address'=>'required',
             'password_confirmation'=>'required | required_with:password |same:password',
+            'avatar' => 'mimes:jpeg,jpg,png,gif', 
            
         ];
     }
@@ -41,7 +42,7 @@ class RequestUser extends FormRequest
             'phone.size'=>'Số điện thoại phải đủ :size số!',
             'password.min' =>'Độ dài tối thiểu :min!',
             'password_confirmation.same' =>'Mật khẩu và xác nhận mật khẩu phải khớp!',
-
+            'avatar.mimes'=>'Ảnh phải có dạng jpeg, jpg, png, gif',
         ];
      }
 
