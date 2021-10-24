@@ -27,12 +27,14 @@ class AdminContactController extends Controller
                 case 'status':
                     $contact->c_status = $contact->c_status ? 0 : 1;
                     $contact->save();
+                    $messages= 'Cập nhật thành công';
                     break;
                 case 'delete':
                     $contact->delete();
+                    $messages= 'Xóa thành công';
                     break;
             }
         }
-        return redirect()->back();
+        return redirect()->back()->with('success',$messages);
     }
 }

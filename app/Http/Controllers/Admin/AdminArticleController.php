@@ -34,7 +34,7 @@ class AdminArticleController extends Controller
     public function store(Request $requestArticle)
     {
         $this->insertOrUpdate($requestArticle);
-        return redirect()->back();
+        return redirect()->back()->with('success','Thêm mới thành công');
     }
   
     /**
@@ -59,7 +59,7 @@ class AdminArticleController extends Controller
     public function update(Request $requestArticle, $id)
     {
         $this->insertOrUpdate($requestArticle,$id);
-        return redirect()->back();
+        return redirect()->back()->with('success','Cập nhật thành công');
     }
 
     /**
@@ -68,8 +68,7 @@ class AdminArticleController extends Controller
      * @return Renderable
      */
     public function insertOrUpdate($requestArticle,$id = '')
-    {
-        
+    {   
         $article= new Article();
         if($id) $article= Article::find($id);
         $article->a_name = $requestArticle->a_name;
@@ -80,11 +79,14 @@ class AdminArticleController extends Controller
 
         if($requestArticle->hasFile('avatar'))
         {
-            $file = upload_image('avatar');
-            if(isset($file['name']))
-            {
-                $article->a_avatar = $file['name'];
+            if($id!=''){
+                $unlink= 'uploads/article/'.$article->a_avatar;
+                unlink($unlink);
             }
+            $name = date("y-m-d-h-m-s", time()) .'_'. $requestArticle->avatar->getClientOriginalName();
+            $requestArticle->avatar->move(public_path().'/uploads/article', $name);
+            //save image
+            $article->a_avatar = $name;
         }
 
         $article->save();
@@ -97,19 +99,26 @@ class AdminArticleController extends Controller
             switch ($action)
             {
                 case 'delete':
+                    if($article->a_avatar){
+                        $unlink= 'uploads/article/'.$article->a_avatar;
+                        unlink($unlink);
+                    }
                     $article->delete();
+                    $messages= 'Xóa thành công';                  
                     break;
                 case 'active':
                     $article->a_active = $article->a_active ? 0 : 1;
                     $article->save();
+                    $messages= 'Cập nhật thành công';
                     break;
                 case 'hot':
                     $article->a_hot = $article->a_hot ? 0 : 1;
                     $article->save();
+                    $messages= 'Cập nhật thành công';
                     break;
             }
 
         }
-        return redirect()->back();
+        return redirect()->back()->with('success','Cập nhật thành công');
     }
 }

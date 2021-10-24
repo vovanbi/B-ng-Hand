@@ -15,7 +15,7 @@ class ShoppingCartController extends FrontendController
     private $vnp_TmnCode = "UDOPNWS1"; //Mã website tại VNPAY
     private $vnp_HashSecret = "EBAHADUGCOEWYXCMYZRMTMLSHGKNRPBN"; //Chuỗi bí mật
     private $vnp_Url = "http://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-    private $vnp_Returnurl = "http://localhost:81/giaythethao/public/gio-hang/thanh-toan-online";
+    private $vnp_Returnurl = "http://localhost:81/B-ng-Hand/public/gio-hang/thanh-toan-online";
     //test
     // Ngân hàng: NCB
     // Số thẻ: 9704198526191432198
@@ -50,13 +50,13 @@ class ShoppingCartController extends FrontendController
             'price'=> $price,
             'weight' => 550,          
             'options'=> [
-                'avatar'=> $product->images[0]->i_avatar,
+                'avatar'=> $product->images[0]->pi_avatar,
                 'sale'=> $product->pro_sale,
-                'price_old'=> $product->pro_price, 
-                'size' =>40, 
+                'price_old'=> $product->pro_price,
+                'size' =>'M', 
                 'number' => $product->pro_number, 
                 'slug' => $product->pro_slug,
-                'img' => asset(pare_url_file($product->images[0]->i_avatar)),
+                'img' => asset($product->images[0]->pi_avatar),
             ],
         ]);
 
@@ -96,6 +96,9 @@ class ShoppingCartController extends FrontendController
     public function getFormPayment()
     {
         $products = \Cart::content();
+        if($products->isEmpty()){
+            return redirect()->back()->with('danger','Giỏ hàng trống không thể thanh toán');
+        }
         return view('shopping.payment',compact('products'));
     }
 
@@ -119,7 +122,7 @@ class ShoppingCartController extends FrontendController
             foreach ($products as $product)
             {
                 OrderDetail::insert([
-                    'od_order_id' => $orderId,
+                    'od_orders_id' => $orderId,
                     'od_product_id' => $product->id,
                     'od_qty' => $product->qty,
                     'od_price' => $product->options->price_old,
@@ -166,7 +169,7 @@ class ShoppingCartController extends FrontendController
                 foreach ($products as $product)
                 {
                     OrderDetail::insert([
-                        'od_order_id' => $orderId,
+                        'od_orders_id' => $orderId,
                         'od_product_id' => $product->id,
                         'od_qty' => $product->qty,
                         'od_price' => $product->options->price_old,
@@ -192,6 +195,9 @@ class ShoppingCartController extends FrontendController
             }
         }              
         $products= \Cart::content();
+        if($products->isEmpty()){
+            return redirect()->back()->with('danger','Giỏ hàng trống không thể thanh toán');
+        }
         return view('shopping.payment_online',compact('products'));
     }
     public function savePayOnline(Request $request)

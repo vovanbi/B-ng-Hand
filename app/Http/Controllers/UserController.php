@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;	
 use App\Models\Order;    
-
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends FrontendController
@@ -32,19 +31,27 @@ class UserController extends FrontendController
     	return view('user.setting',compact('user'));
     }
     public function updateInfo(Request $request)
-    {
+    {   
+        $checkUser=User::where('email','=',$request->email)->first();
         $user=User::find(auth()->id());
+        if($checkUser && $checkUser->email!=$user->email){
+            return redirect()->back()->with('danger','Cập nhật thông tin thất bại');
+        }
         $user->name=$request->name;
         $user->email=$request->email;
-        $user->phone=$request->number;
+        $user->phone=$request->phone;
         $user->address=$request->address;
+
         if($request->hasFile('avatar'))
         {
-            $file = upload_image('avatar');
-            if(isset($file['name']))
-            {
-                $user->avatar = $file['name'];
+            if($user->avatar){
+                $unlink= 'uploads/user/'.$user->avatar;
+                unlink($unlink);
             }
+            $name = date("y-m-d-h-m-s", time()) .'_'. $request->avatar->getClientOriginalName();
+            $request->avatar->move(public_path().'/uploads/user', $name);
+            //save image
+            $user->avatar = $name;
         }
         
         $user->save();
@@ -75,6 +82,8 @@ class UserController extends FrontendController
     public function destroy()
     {
         $user = User::find($id);
+        $unlink= 'uploads/user/'.$user->avatar;
+        unlink($unlink);
         $user->delete();
         return redirect()->back()->with('success','Xóa tài khoản thành công');
     }

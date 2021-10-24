@@ -26,7 +26,7 @@ class AdminOrderController extends Controller
     {
         if ($request->ajax())
         {
-            $ordersDetail = OrderDetail::with('product')->where('od_order_id',$id)->get();
+            $ordersDetail = Order::find($id)->orderDetails;
             $html = view('admin.order.orderDetail',compact('ordersDetail'))->render();
             return \response()->json($html);
         }
@@ -39,13 +39,16 @@ class AdminOrderController extends Controller
 
             switch ($action)
             {
-                case 'delete':
+                case 'delete':                
+                    foreach ($orders->orderDetails as $key => $value) {
+                        $value->delete();
+                    }
                     $orders->delete();
                     $messages = 'Xoá thành công';
                     break;
                 case 'status':
                     $orders = Order::find($id);
-                    $ordersDetail = OrderDetail::where('od_order_id',$id)->get();
+                    $ordersDetail = OrderDetail::where('od_orders_id',$id)->get();
                      if($ordersDetail)
                      {
                          //tru di so luong san pham

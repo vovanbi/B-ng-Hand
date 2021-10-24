@@ -45,7 +45,7 @@
                                 <div class="card blog rounded border-0 shadow">
                                     <a href="{{ route('get.detail.article',$article->a_slug) }}">
                                         <div class="position-relative">                                       
-                                            <img src="{{ asset(pare_url_file($article->a_avatar)) }}" class="card-img-top rounded-top" alt="...">
+                                            <img height="300px" src="{{ asset('uploads/article/'.$article->a_avatar) }}" class="card-img-top rounded-top" alt="...">
                                         <div class="overlay rounded-top bg-dark"></div>
                                         </div>
                                     </a>

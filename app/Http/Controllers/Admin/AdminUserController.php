@@ -14,7 +14,7 @@ class AdminUserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::where('type','=',1)->get();
         $viewData = [
             'users'=>$users,
         ];
@@ -29,12 +29,30 @@ class AdminUserController extends Controller
             switch ($action)
             {
                 case 'delete':
+                    if($user->rating){
+                        foreach ($user->rating as $key => $value) {
+                            $value->delete();
+                        }
+                    }
+                    if($user->orders){
+                        foreach ($user->orders as $key => $value) {
+                            foreach($value->orderDetails as $key => $item){
+                                $item->delete();
+                            }
+                            $value->delete();
+                        }
+                    }
+                    if($user->avatar){
+                        $unlink= 'uploads/user/'.$user->avatar;
+                        unlink($unlink);
+                    }                   
                     $user->delete();
+                    $messages = 'Xoá thành công';
                     break;
             }
 
         }
-        return redirect()->back();
+        return redirect()->back()->with('success',$messages);
     }
     
 }

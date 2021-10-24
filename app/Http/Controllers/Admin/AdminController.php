@@ -47,7 +47,7 @@ class AdminController extends Controller
         $transactionNews = Order::with('user:id,name')
             ->limit(5)->orderByDesc('id')->get();
 
-        $countUser = User::count();
+        $countUser = User::where('type','=',1)->count();
         $countContact = Contact::count();
         $countRating = Rating::count();
         $countOrder = Order::count();

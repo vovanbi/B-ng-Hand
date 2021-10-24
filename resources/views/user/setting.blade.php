@@ -7,12 +7,12 @@
                 <form action="{{ route('updateInfo') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="mt-3 text-md-left text-center d-sm-flex">
-                        <img id="out_img" src="{{ auth()->user()->avatar!=null ? asset(pare_url_file(auth()->user()->avatar)) : asset('image/unnamed.png') }}" class="avatar float-md-left avatar-medium rounded-circle shadow mr-md-4" alt="">                                             
+                        <img id="out_img" src="{{ auth()->user()->avatar!=null ? asset('uploads/user/'.auth()->user()->avatar) : asset('image/unnamed.png') }}" class="avatar float-md-left avatar-medium rounded-circle shadow mr-md-4" alt="" style="width: 100px;height: 100px">                                             
                         <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Thêm Ảnh</label>
-                                <div class="position-relative">                                 
-                                    <input type="file" id="input_img" name="avatar" class="form-control">
+                            <div style="margin:30px 0">
+                                <div class="position-relative">
+                                    <input type="file" class="custom-file-input" name="avatar" id="input_img">
+                                    <label class="custom-file-label" for="input_img">Thêm  Ảnh</label>
                                 </div>
                             </div>
                         </div><!--end col-->   
@@ -23,7 +23,7 @@
                                 <label>Họ Tên</label>
                                 <div class="position-relative">
                                     <i data-feather="user" class="fea icon-sm icons"></i>
-                                    <input name="name" id="first" type="text" class="form-control pl-5" value="{{ $user->name }}" placeholder="First Name :">
+                                    <input required="" name="name" id="first" type="text" class="form-control pl-5" value="{{ $user->name }}" placeholder="First Name :">
                                 </div>
                             </div>
                         </div><!--end col-->                       
@@ -32,7 +32,7 @@
                                 <label>Email</label>
                                 <div class="position-relative">
                                     <i data-feather="mail" class="fea icon-sm icons"></i>
-                                    <input name="email" id="email" type="email" class="form-control pl-5" value="{{ $user->email }}" placeholder="Your email :">
+                                    <input required="" name="email" id="email" type="email" class="form-control pl-5" value="{{ $user->email }}" placeholder="Your email :">
                                 </div>
                             </div> 
                         </div><!--end col-->
@@ -41,7 +41,12 @@
                                 <label>Số Điện Thoại :</label>
                                 <div class="position-relative">
                                     <i data-feather="phone" class="fea icon-sm icons"></i>
-                                    <input name="number" id="number" type="number" class="form-control pl-5" value="{{ $user->phone }}" placeholder="Phone :">
+                                    <input required="" name="phone" id="phone" type="number" class="form-control pl-5" value="{{ $user->phone }}" placeholder="Phone :">
+                                    @if($errors->has('phone'))
+                                        <span class="text-danger">
+                                            {{ $errors->first('phone') }}
+                                        </span>
+                                    @endif
                                 </div>
                             </div>
                         </div><!--end col-->
@@ -50,7 +55,7 @@
                                 <label>Địa Chỉ</label>
                                 <div class="position-relative">
                                     <i data-feather="map-pin" class="fea icon-sm icons"></i>
-                                    <input name="address" id="occupation" type="text" class="form-control pl-5" value="{{ $user->address }}" placeholder="Occupation :">
+                                    <input required="" name="address" id="occupation" type="text" class="form-control pl-5" value="{{ $user->address }}" placeholder="Occupation :">
                                 </div>
                             </div> 
                         </div><!--end col-->
@@ -74,7 +79,7 @@
                                         <label>Mật khẩu cũ :</label>
                                         <div class="position-relative">
                                             <i data-feather="key" class="fea icon-sm icons"></i>
-                                            <input type="password" class="form-control pl-5" name="password" placeholder="Old password" >
+                                            <input type="password" class="form-control pl-5" name="password" placeholder="Old password" required="">
                                             <span class="form-message">
                                                 @if($errors->has('passsword'))
                                                 <span class="text-danger">
@@ -91,7 +96,7 @@
                                         <label>Mật khẩu mới :</label>
                                         <div class="position-relative">
                                             <i data-feather="key" class="fea icon-sm icons"></i>
-                                            <input type="password" class="form-control pl-5" name="newpassword" placeholder="New password" >
+                                            <input required="" type="password" class="form-control pl-5" name="newpassword" placeholder="New password">
                                             
                                         </div>
                                     </div>

@@ -2373,7 +2373,6 @@ p {
   left: 0;
   top: 0;
   z-index: 1030;
-  background-color: transparent;
   border: 0;
   -webkit-transition: all .5s ease;
   transition: all .5s ease;
@@ -2608,7 +2607,7 @@ p {
 }
 
 #topnav.nav-sticky {
-  background: #ffddf3;
+  background: #fff3fa !important;
   -webkit-box-shadow: 0 0 3px rgba(60, 72, 88, 0.15);
           box-shadow: 0 0 3px rgba(60, 72, 88, 0.15);
 }

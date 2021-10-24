@@ -47,7 +47,7 @@
                     </div><!--end col-->
 
                     <div class="col-md-7 mt-4 mt-sm-0 pt-2 pt-sm-0">
-                        <ul class="list-unstyled mb-0 text-center text-muted">
+                        <ul class="ml-5 list-unstyled mb-0 text-muted">
                             <li class="list-inline-item mr-2"><i class="mdi mdi-heart-outline mr-1"></i>{{ $productDetail->pro_heart }} Lượt thích</li>
                             <li class="list-inline-item mr-2"><i class="mdi mdi-comment-outline mr-1"></i>{{ $productDetail->pro_total_rating }} Đánh giá</li>
                             <li class="list-inline-item"><i class="mdi mdi-eye-outline mr-1"></i>{{ $productDetail->pro_view }} Lượt xem</li>
@@ -64,8 +64,9 @@
                                 @for($i = 1;$i <=5; $i++)
                                 <li class="list-inline-item"><i class="mdi mdi-star{{ $i > $averageStar ? '-outline' : ''}}"></i></li>
                                 @endfor
+                                <span>({{$averageStar}})</span>
                             </ul>
-                            
+                          
                             <h5 class="mt-4 py-2">Tổng quát :</h5>
                             <p class="text-muted">{{ $productDetail->pro_title_seo }}</p>
                         
@@ -149,17 +150,17 @@
                                             <li class="mt-4">
                                                 <div class="d-flex justify-content-between">
                                                     <div class="media align-items-center">
-                                                        <a class="pr-3" href="#">
+                                                        <a class="pr-3">
                                                             <img src="
-                                                            @if($rating->ra_user_id == 0)
-                                                                {{ asset('image/unnamed.png') }}
+                                                            @if($rating->user->avatar)
+                                                                {{asset('uploads/user/'.$rating->user->avatar)}}
                                                             @else
-                                                                {{ asset('image/unnamed.png') }} 
+                                                                {{asset('image/unnamed.png')}}
                                                             @endif"
                                                             class="img-fluid avatar avatar-md-sm rounded-circle shadow" alt="img">
                                                         </a>
                                                         <div class="commentor-detail">
-                                                            <h6 class="mb-0"><a href="javascript:void(0)" class="media-heading text-dark">{{ $rating->ra_name }}</a></h6>
+                                                            <h6 class="mb-0"><a href="javascript:void(0)" class="media-heading text-dark">{{ $rating->user->name }}</a></h6>
                                                             <small class="text-muted">{{ $rating->created_at }}</small>
                                                         </div>
                                                     </div>
@@ -181,7 +182,7 @@
                                             @endforeach
                                         </ul>
                                     </div><!--end col-->
-
+                                    @if($checkRate==1)
                                     <div class="col-lg-6 mt-4 mt-lg-0 pt-2 pt-lg-0">
                                         <form class="ml-lg-4" method="post" action="{{ route('save.form.rating',$productDetail) }}">
                                             @csrf
@@ -260,7 +261,7 @@
                                                         <label>Họ Tên <span class="text-danger">*</span></label>
                                                         <div class="position-relative">
                                                             <i data-feather="user" class="fea icon-sm icons"></i>
-                                                            <input id="name" name="name" type="text" placeholder="Name" class="form-control pl-5" required="" value="{{ auth()->user() ? auth()->user()->name : ''}}">
+                                                            <input id="name" name="name" type="text" placeholder="Name" class="form-control pl-5" required="" value="{{ auth()->user() ? auth()->user()->name : ''}}" readonly="">
                                                         </div>
                                                     </div>
                                                 </div><!--end col-->
@@ -270,7 +271,7 @@
                                                         <label>Email <span class="text-danger">*</span></label>
                                                         <div class="position-relative">
                                                             <i data-feather="mail" class="fea icon-sm icons"></i>
-                                                            <input id="email" type="email" placeholder="Email" name="email" class="form-control pl-5" required="" value="{{ auth()->user() ? auth()->user()->email : ''}}">
+                                                            <input id="email" type="email" placeholder="Email" name="email" class="form-control pl-5" required="" value="{{ auth()->user() ? auth()->user()->email : ''}}" readonly="">
                                                         </div>
                                                     </div>
                                                 </div><!--end col-->
@@ -283,6 +284,7 @@
                                             </div><!--end row-->
                                         </form><!--end form-->
                                     </div><!--end col-->
+                                    @endif
                                 </div><!--end row-->
                             </div>
                         </div>

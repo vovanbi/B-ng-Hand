@@ -18,9 +18,9 @@
                                             echo asset('image/unnamed.png');
                                         }
                                         else{
-                                            echo asset(pare_url_file($user->avatar));
+                                            echo asset('uploads/user/'.$user->avatar);
                                         }
-                                        ?>" class="avatar avatar-large rounded-circle shadow d-block mx-auto" alt="">
+                                        ?>" class="avatar avatar-large rounded-circle shadow d-block mx-auto" alt="" style="width: 150px;height: 150px">
                                     </div><!--end col-->
     
                                     <div class="col-lg-10 col-md-9">

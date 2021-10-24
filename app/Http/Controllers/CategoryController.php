@@ -45,7 +45,7 @@ class CategoryController extends FrontendController
         $products = Product::where('pro_active',Product::STATUS_PUBLIC);
         if($slug!='')
         {
-            $id = Category::where('c_name',$slug)->select('id')->first()->id;
+            $id = Category::where('c_slug',$slug)->select('id')->first()->id;
             $products->where('pro_category_id',$id)->get();
         }
         if($request->search)
@@ -85,5 +85,17 @@ class CategoryController extends FrontendController
                     $products->orderBy('id','DESC');
             }
         }
+    }
+    public function getSearch(Request $request)
+    {
+        $products = Product::where('pro_active',Product::STATUS_PUBLIC)->where('pro_name','like','%'.$request->search.'%');
+        $this->getFilter($request,$products);
+        $products=$products->paginate(6);
+        
+        $viewData = [
+            'products' => $products,
+            'query' => $request->query()
+        ];
+        return view('product.index',$viewData);
     }
 }

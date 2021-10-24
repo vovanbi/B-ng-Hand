@@ -27,7 +27,7 @@
                                 <div class="pb-4">
                                     @foreach(\Cart::content() as $product)
                                     <div class="media align-items-center mt-4">
-                                        <img src="{{ asset($product->options->avatar) }}" class="shadow rounded" style="max-height: 64px;" alt="">
+                                        <img src="{{ asset('uploads/'.$product->options->avatar) }}" class="shadow rounded" style="max-height: 64px;" alt="">
                                         <div class="media-body text-left ml-3">
                                             <h6 class="text-dark mb-0 text-cart">{{ $product->name }}</h6>
                                             <p class="text-muted mb-0">{{ $product->price }} X {{$product->qty}}</p>

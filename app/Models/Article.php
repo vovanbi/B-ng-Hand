@@ -40,5 +40,4 @@ class Article extends Model
     {
         return data_get($this->hot,$this->a_hot,'[N\A]');
     }
-    
 }

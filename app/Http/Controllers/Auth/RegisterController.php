@@ -17,7 +17,7 @@ class RegisterController extends Controller
     }
     public function postRegister(RequestUser $request)
     {
-        if(EmailChecker::check($request->email))
+        if(1==1)
         {
         $user = new User();
         $user->name = $request->name;
