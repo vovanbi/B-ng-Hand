@@ -60,7 +60,7 @@
                               <a href="{{ route('admin.action.order',['status',$order->id]) }}" class="label label-default">Chờ xủ lý</a>
                           @endif
                         </td>
-                        <td>{{ $order->created_at->format('d-m-Y') }}</td>
+                        <td>{{ $order->created_at }}</td>
                         <td>
                           <a class="js_order_item btn btn-info" data-id="{{ $order->id }}" style="font-size: 12px;" href="{{ route('admin.detail.order',$order->id) }}"><i class="fa fa-eye"></i> Xem</a>
                           <a class="btn btn-danger" style="font-size: 12px;" href="{{ route('admin.action.order',['delete',$order->id]) }}" onclick="return confirm('Bạn chắc chắn muốn xóa mục này?');"><i class="fa fa-trash"></i> Xóa</a>

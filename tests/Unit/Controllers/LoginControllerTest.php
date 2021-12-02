@@ -8,42 +8,44 @@ use App\Models\User;
 
 class LoginControllerTest extends TestCase
 {
-	public function testViewIndexCategory(){
+	public function testViewIndexLogin(){
     	$response = $this->get('/dang-nhap');
         $response->assertStatus(200);
         $response->assertViewIs('auth.login')->assertSee('Đăng nhập');
     }
-    public function testCanLoginAdmin()
-    {
+    public function testLogin()
+    {	
     	$user= [
 	        'email' => 'ShoesShop.UED@gmail.com',
 	        'password' => '123',
 	    ];
-	    $this->withoutMiddleware();
-	    $response= $this->post('/dang-nhap', [
-	        'email' => $user['email'],
-	        'password' => $user['password'],
-	    ]);
+	    // $user= [
+	    //     'email' => 'hungbbtbbt10@gmail.com',
+	    //     'password' => 'fingerg12',
+	    // ];
+	    if(\Auth::attempt($user)){
+	    	$this->withoutMiddleware();
+			$response= $this->post('/dang-nhap',$user);
 
-	    $response->assertRedirect('/admin');
-	    $response->assertStatus(302);
-	    $this->assertTrue(\Auth::attempt($user));
-    }
-    public function testCanLogin()
-    {
-    	$user= [
-	        'email' => 'hungbbtbbt10@gmail.com',
-	        'password' => 'fingerg12',
-	    ];
-	    $this->withoutMiddleware();
-	    $response= $this->post('/dang-nhap', [
-	        'email' => $user['email'],
-	        'password' => $user['password'],
-	    ]);
-
-	    $response->assertRedirect('/');
-	    $response->assertStatus(302);
-	    $this->assertTrue(\Auth::attempt($user));
+	    	//admin
+	    	if(\Auth::user()->type==0){
+			    $response->assertRedirect('/admin');
+			    $response->assertStatus(302);
+			    $success = 'Đăng nhập thành công';
+    			$this->assertTrue(isset($success));
+	    	}
+	    	//user
+	    	else{
+			    $response->assertRedirect('/');
+			    $response->assertStatus(302);
+			    $success = 'Đăng nhập thành công';
+    			$this->assertTrue(isset($success));
+	    	}
+	    }
+	    else{
+    		$error = 'Đăng nhập thất bại';
+    		$this->assertTrue(isset($error));	  
+	    }
     }
     public function testCannotLoginWithIncorrectPassword()
 	{
@@ -52,10 +54,7 @@ class LoginControllerTest extends TestCase
 	        'password' => '321',
 	    ];
 	    $this->withoutMiddleware();
-	    $response= $this->post('/dang-nhap', [
-	        'email' => $user['email'],
-	        'password' => $user['password'],
-	    ]);
+	    $response= $this->post('/dang-nhap', $user);
 
 	    $response->assertRedirect('/');
 	    $response->assertStatus(302);

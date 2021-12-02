@@ -13,5 +13,6 @@ class AdminArticleControllerTest extends TestCase
     	$response = $this->get('admin/article');
     	$response->assertStatus(200);
     	$response->assertViewIs('admin.article.index')->assertSee('Quản lý bài viết');
+    	$this->assertTrue(isset($response['articles']));
     }
 }

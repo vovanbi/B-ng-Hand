@@ -13,5 +13,6 @@ class AdminRatingControllerTest extends TestCase
     	$response = $this->get('admin/rating');
     	$response->assertStatus(200);
     	$response->assertViewIs('admin.rating.index')->assertSee('Quản lý đánh giá');
+    	$this->assertTrue(isset($response['ratings']));
     }
 }

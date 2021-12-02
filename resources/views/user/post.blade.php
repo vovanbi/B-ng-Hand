@@ -52,7 +52,7 @@
                                                     <span href="" class="btn btn-danger">Chờ xủ lý</span>
                                                 @endif
                                             </td>
-                                            <td>{{ $order->created_at->format('d-m-Y') }}</td>
+                                            <td>{{ $order->created_at }}</td>
                                             </tr>
                                             @endforeach
                                             @endif

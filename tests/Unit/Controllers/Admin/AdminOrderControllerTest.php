@@ -13,5 +13,6 @@ class AdminOrderControllerTest extends TestCase
     	$response = $this->get('admin/order');
     	$response->assertStatus(200);
     	$response->assertViewIs('admin.order.index')->assertSee('Quản lý đơn hàng');
+    	$this->assertTrue(isset($response['orders']));
     }
 }

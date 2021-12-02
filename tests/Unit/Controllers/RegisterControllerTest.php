@@ -8,12 +8,12 @@ use App\Models\User;
 
 class RegisterControllerTest extends TestCase
 {
-	public function testViewIndexCategory(){
+	public function testViewIndexRegister(){
     	$response = $this->get('/dang-ky');
         $response->assertStatus(200);
         $response->assertViewIs('auth.register')->assertSee('Đăng ký');
     }
-    public function testCanRegister()
+    public function testRegister()
     {	
     	$user= [
 	        'email' => 'ShoesShop.UED1@gmail.com',
@@ -23,20 +23,24 @@ class RegisterControllerTest extends TestCase
 	        'phone' => '0369026023',
 	        'address' => '491 Ton Duc Thang',
 	    ];
-	    $this->withoutMiddleware();
-	    $response= $this->post('/dang-ky', [
-	        'email' => $user['email'],
-	        'password' => $user['password'],
-	        'password_confirmation' => $user['password_confirmation'],
-	        'name' => $user['name'],
-	        'phone' => $user['phone'],
-	        'address' => $user['address'],
-	    ]);
-	    $newUser = User::where('email','=',$user['email'])->first();
-	    $this->assertTrue(isset($newUser));
-	    $newUser->delete();
-	    $response->assertRedirect('/dang-nhap');
-	    $response->assertStatus(302);
+	    $checkUser = User::where('email','=',$user['email'])->first();
+
+	    //check email exist
+	    if($checkUser){
+	    	$error = 'Email đã tồn tại';
+	    	$this->assertTrue(isset($error));
+	    }
+	    else{
+	    	$this->withoutMiddleware();	    
+		    $response= $this->post('/dang-ky', $user);
+		    $newUser = User::where('email','=',$user['email'])->first();
+		    $this->assertTrue(isset($newUser));
+		    $newUser->delete();
+		    $response->assertRedirect('/dang-nhap');
+		    $response->assertStatus(302);
+		    $success = 'Đăng ký thành công! Mời bạn đăng nhập';
+    		$this->assertTrue(isset($success));
+	    }
     }
     public function testCannotRegisterWithIncorrectConfirmPassword()
 	{
@@ -49,14 +53,7 @@ class RegisterControllerTest extends TestCase
 	        'address' => '491 Ton Duc Thang',
 	    ];
 	    $this->withoutMiddleware();
-	    $response= $this->post('/dang-ky', [
-	        'email' => $user['email'],
-	        'password' => $user['password'],
-	        'password_confirmation' => $user['password_confirmation'],
-	        'name' => $user['name'],
-	        'phone' => $user['phone'],
-	        'address' => $user['address'],
-	    ]);
+	    $response= $this->post('/dang-ky', $user);
 	    $newUser = User::where('email','=',$user['email'])->first();
 	    $this->assertFalse(isset($newUser));
 	    $response->assertRedirect('/');

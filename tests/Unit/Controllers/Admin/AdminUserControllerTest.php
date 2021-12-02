@@ -13,5 +13,6 @@ class AdminUserControllerTest extends TestCase
     	$response = $this->get('admin/user');
     	$response->assertStatus(200);
     	$response->assertViewIs('admin.user.index')->assertSee('Quản lý khách hàng');
+    	$this->assertTrue(isset($response['users']));
     }
 }
