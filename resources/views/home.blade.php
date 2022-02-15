@@ -47,7 +47,7 @@
                         <div id="client-four" class="owl-carousel owl-theme">
                             @foreach($productsHot as $product)
                             <div class="card shop-list border-0 position-relative m-2">
-                                <div class="ribbon ribbon-left ribbon-danger overflow-hidden"><span class="text-center d-block shadow small h6">Hot</span></div>
+                                <div class="ribbon ribbon-left ribbon-danger overflow-hidden"><span class="text-center d-block shadow small h6">Nổi Bật</span></div>
                                 <div class="shop-image position-relative overflow-hidden rounded shadow">
                                     <a href="{{ route('get.detail.product',$product->pro_slug) }}">
                                         <img src="{{ asset('uploads/'.$product->images[0]->pi_avatar) }}" class="img-fluid" alt="">
@@ -56,7 +56,7 @@
                                         <img src="{{ asset('uploads/'.$product->images[1]->pi_avatar) }}" class="img-fluid" alt="">
                                     </a>
                                     <ul class="list-unstyled shop-icons">
-                                        <li><a href="{{ route('get.like.product',$product->id)}}" class="btn btn-icon btn-pills btn-soft-danger"><i data-feather="heart" class="icons"></i></a></li>
+                                        <!-- <li><a href="{{ route('get.like.product',$product->id)}}" class="btn btn-icon btn-pills btn-soft-danger"><i data-feather="heart" class="icons"></i></a></li> -->
                                         <li class="mt-2 list-inline-item"><a href="{{ route('get.view.product',$product->id ) }}" data-id="{{ $product->id }}"  class="productview btn btn-icon btn-pills btn-soft-primary"><i data-feather="eye" class="icons"></i></a></li>
                                         <li class="mt-2"><a href="{{ route('add.cart',$product->id) }}" class="btn btn-icon btn-pills btn-soft-warning"><i data-feather="shopping-cart" class="icons"></i></a></li>
                                     </ul>
@@ -131,7 +131,7 @@
                     @foreach($productsSell as $product)
                     <div class="col-lg-3 col-md-6 col-12 mt-4 pt-2">
                         <div class="card shop-list border-0 position-relative">
-                            <div class="ribbon ribbon-left ribbon-primary overflow-hidden"><span class="text-center d-block shadow small h6">Selling</span></div>
+                            <div class="ribbon ribbon-left ribbon-primary overflow-hidden"><span class="text-center d-block shadow small h6">Bán Chạy</span></div>
                             <div class="shop-image position-relative overflow-hidden rounded shadow">
                                 <a href="{{ route('get.detail.product',$product->pro_slug) }}">
                                     <img src="{{ asset('uploads/'.$product->images[0]->pi_avatar) }}" class="img-fluid" alt="">
@@ -140,7 +140,7 @@
                                     <img src="{{ asset('uploads/'.$product->images[1]->pi_avatar) }}" class="img-fluid" alt="">
                                 </a>
                                 <ul class="list-unstyled shop-icons">
-                                    <li><a href="{{ route('get.like.product',$product->id)}}" class="btn btn-icon btn-pills btn-soft-danger"><i data-feather="heart" class="icons"></i></a></li>
+                                    <!-- <li><a href="{{ route('get.like.product',$product->id)}}" class="btn btn-icon btn-pills btn-soft-danger"><i data-feather="heart" class="icons"></i></a></li> -->
                                     <li class="mt-2"><a href="{{ route('get.view.product',$product->id)}}" data-id="{{ $product->id }}"  class="productview btn btn-icon btn-pills btn-soft-primary"><i data-feather="eye" class="icons"></i></a></li>
                                     <li class="mt-2"><a href="{{ route('add.cart',$product->id) }}" class="btn btn-icon btn-pills btn-soft-warning"><i data-feather="shopping-cart" class="icons"></i></a></li>
                                 </ul>

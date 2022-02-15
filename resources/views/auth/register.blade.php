@@ -25,7 +25,7 @@
                                                 <label for="fullname">Họ và tên <span class="text-danger">*</span></label>
                                                 <div class="position-relative">
                                                     <i data-feather="user" class="fea icon-sm icons"></i>
-                                                    <input value="{{ old('name') }}" required="" type="text" class="form-control pl-5 {{ ($errors->has('name')) ? 'is-invalid' : '' }}" placeholder="Nguyen Van A" name="name" id="fullname">
+                                                    <input maxlength="100" value="{{ old('name') }}" required="" type="text" class="form-control pl-5 {{ ($errors->has('name')) ? 'is-invalid' : '' }}" placeholder="Nguyen Van A" name="name" id="fullname">
                                                     <span class="form-message">
                                                          @if($errors->has('name'))
                                                         <span class="text-danger">
@@ -58,7 +58,7 @@
                                                 <label>Địa chỉ <span class="text-danger">*</span></label>
                                                 <div class="position-relative">
                                                     <i class="fea icon-sm icons uil-location-point"></i>
-                                                    <input value="{{ old('address') }}" required="" type="text" class="form-control pl-5 {{ ($errors->has('address')) ? 'is-invalid' : '' }}" placeholder="491 Ton Duc Thang, Lien Chieu, Da Nang" name="address" id="address">
+                                                    <input maxlength="100" value="{{ old('address') }}" required="" type="text" class="form-control pl-5 {{ ($errors->has('address')) ? 'is-invalid' : '' }}" placeholder="491 Ton Duc Thang, Lien Chieu, Da Nang" name="address" id="address">
                                                      <span class="form-message">
                                                           @if($errors->has('address'))
                                                         <span class="text-danger">

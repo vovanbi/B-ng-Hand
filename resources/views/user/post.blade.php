@@ -37,6 +37,7 @@
                                                 <th>Tổng tiền</th>
                                                 <th>Trạng thái</th>
                                                 <th>Thời gian</th>
+                                                <th>Chức năng</th>
                                             </tr>
                                             @if($orders)
                                             @foreach($orders as $order)
@@ -53,6 +54,11 @@
                                                 @endif
                                             </td>
                                             <td>{{ $order->created_at }}</td>
+                                            <td>
+                                                @if ( $order->o_status == 1)
+                                                    <a class="js_order_item btn btn-info" data-id="{{ $order->id }}" href="{{ route('user.detail.order',$order->id) }}"><i class="fa fa-eye"></i> Xem</a>
+                                                @endif 
+                                            </td>
                                             </tr>
                                             @endforeach
                                             @endif
@@ -67,10 +73,45 @@
             </div>
         </div>
     </div><!--end col-->
+
+<!--js-->
+<div class="modal fade" id="myModalOrder" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Chi tiết đơn hàng #<b class="order_id"></b></h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>            
+            </div>
+            <div class="modal-body" id="md_content">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Thoát</button>
+            </div>
+        </div>
+    </div>
+</div>
 @stop
 @section('script')
-    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
     <script>
-        CKEDITOR.replace('content');
+        $(function (){
+            $(".js_order_item").click(function (event){
+                event.preventDefault();
+                let $this = $(this);
+                let url = $this.attr('href');
+                $("#md_content").html('')
+                $(".order_id").text($this.attr('data-id'));
+                $("#myModalOrder").modal('show');
+
+                $.ajax({
+                    url: url,
+                }).done(function (result){
+                    if(result)
+                    {
+                        $("#md_content").html('').append(result);
+                    }
+                });
+            });
+        })
     </script>
 @stop

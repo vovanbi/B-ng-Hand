@@ -82,7 +82,7 @@
                                     </div><!--end row-->
                                     <div class="row">
                                         <div class="col-sm-12 text-center">
-                                            <input type="submit" id="submit" class="submitBnt btn btn-primary btn-block" value="Gửi Phản Hồi">
+                                            <input type="submit" id="submit" class="submitBnt btn btn-black btn-block" value="Gửi Phản Hồi">
                                             <div id="simple-msg"></div>
                                         </div><!--end col-->
                                     </div><!--end row-->

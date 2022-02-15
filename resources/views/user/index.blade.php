@@ -97,7 +97,7 @@
         </div>
 
             <div class="col-12 mt-4 pt-2">
-                <a href="{{ route('get.user.setting') }}" class="btn btn-primary">Xem Thêm <i class="mdi mdi-chevron-right"></i></a>
+                <a href="{{ route('get.user.setting') }}" class="btn btn-black">Xem Thêm <i class="mdi mdi-chevron-right"></i></a>
             </div><!--end col-->
         </div><!--end row-->
     </div><!--end col-->

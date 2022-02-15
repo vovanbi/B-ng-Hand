@@ -16,6 +16,6 @@ class HomeControllerTest extends TestCase
     	$response = $this->get('/');
     	$this->assertTrue(isset($response['productsHot']));
         $this->assertTrue(isset($response['productsSell']));
-		$this->assertEquals(6, $response['productsSell']->count());
+		$this->assertEquals(4, $response['productsSell']->count());
     }
 }

@@ -16,8 +16,8 @@ class ProductDetailController extends FrontendController
     public function productDetail($slug='')
     {
         $productDetail = Product::where([
-        	'pro_active' => Product::STATUS_PUBLIC,
-        	'pro_slug' => $slug,
+            'pro_active' => Product::STATUS_PUBLIC,
+            'pro_slug' => $slug,
         ])->first();
         
         $checkRate = 0;
@@ -52,8 +52,8 @@ class ProductDetailController extends FrontendController
         $ratings = Rating::where('ra_product_id',$productDetail->id)->orderBy('id','DESC')->paginate(10);
         $viewData=[
             'averageStar' => isset($averageStar) ? $averageStar : 0,
-        	'productDetail' => $productDetail,
-        	'products' => $products,
+            'productDetail' => $productDetail,
+            'products' => $products,
             'ratings' => $ratings,
             'checkRate' => $checkRate,
         ];
@@ -87,7 +87,7 @@ class ProductDetailController extends FrontendController
                 'size' =>'M', 
                 'number' => $product->pro_number,   
                 'slug' => $product->pro_slug,
-                'img' => asset($product->images[0]->pi_avatar),
+                'img' => asset('uploads/'.$product->images[0]->pi_avatar),
             ],
         ]);
         return redirect()->route('get.list.cart');

@@ -60,15 +60,15 @@
 
                                 <!-- color -->
                                 <div class="widget mt-4 pt-2">
-                                    <h5 class="widget-title">Color</h5>
+                                    <h5 class="widget-title">Lọc Theo Màu</h5>
                                    
                                         <ul class="list-unstyled mt-4 mb-0" id="color" name="color">
-                                        <li class="list-inline-item"><a href="{{ route('get.color.blue.product','sold')}}" class="px-3 py-1 rounded-pill bg-primary" title="Selling"></a></li>
-                                        <li class="list-inline-item"><a href="{{ route('get.color.red.product','hot')}}" class="px-3 py-1 rounded-pill bg-danger" title="Hot"></a></li>
-                                        <li class="list-inline-item"><a href="{{ route('get.color.green.product','sale')}} " class="px-3 py-1 rounded-pill bg-success" title="Sale"></a></li>
-                                         <li class="list-inline-item"><a href="{{route('get.color.warning.product','default')}} "class="px-3 py-1 rounded-pill bg-warning" title="Feature"></a></li>                                    
+                                        <li class="list-inline-item"><a href="{{ route('get.color.blue.product','sold')}}" class="px-3 py-1 rounded-pill bg-primary" title="Bán chạy"></a></li>
+                                        <li class="list-inline-item"><a href="{{ route('get.color.red.product','hot')}}" class="px-3 py-1 rounded-pill bg-danger" title="Nổi Bật"></a></li>
+                                        <li class="list-inline-item"><a href="{{ route('get.color.green.product','sale')}} " class="px-3 py-1 rounded-pill bg-success" title="Giảm Giá"></a></li>
+                                         <li class="list-inline-item"><a href="{{route('get.color.warning.product','default')}} "class="px-3 py-1 rounded-pill bg-warning" title="Phỏ Biến"></a></li>                                    
                                     </ul>
-                                  </div>
+                                </div>
                               
                                 <!-- COlor -->
 
@@ -114,7 +114,7 @@
                                           
                                           <form class="tree-most" method="get" id="form_order">
                                             <div class="orderby-wrapper pull-right">
-                                                <select name="orderby" class="orderby">
+                                                <select name="orderby" class="orderby btn btn-black">
                                                     <option {{ \Request::get('orderby') == 'md' || !Request::get('orderby') ? 'selected="selected"' : '' }} value="md" selected="selected">Mặc định</option>
                                                     <option {{ \Request::get('orderby') == 'desc' ? 'selected="selected"' : '' }} value="desc">Mới nhất</option>
                                                     <option {{ \Request::get('orderby') == 'asc' ? 'selected="selected"' : '' }} value="asc">Sản phẩm cũ</option>
@@ -137,25 +137,25 @@
                                       @if($product->pro_hot == 1)
                                       <div class="ribbon ribbon-left ribbon-danger overflow-hidden">
                                          <span class="text-center d-block shadow small h6">
-                                          Hot
+                                          Nổi Bật
                                          </span>
                                        </div>
                                       @elseif($product->pro_buy > 0)
                                       <div class="ribbon ribbon-left ribbon-primary overflow-hidden">
                                         <span class="text-center d-block shadow small h6">
-                                       Selling
+                                       Bán Chạy
                                        </span>
                                        </div>
                                       @elseif($product->pro_sale >0)
                                       <div class="ribbon ribbon-left ribbon-success overflow-hidden">
                                         <span class="text-center d-block shadow small h6">
-                                       Sale
+                                       Giảm Giá
                                       </span>
                                        </div>
                                        @else
                                        <div class="ribbon ribbon-left ribbon-warning overflow-hidden">
                                         <span class="text-center d-block shadow small h6">
-                                       Feature
+                                       Phổ Biến
                                       </span>
                                        </div>
                                       @endif
@@ -167,7 +167,7 @@
                                         <img src="{{ asset('uploads/'.$product->images[1]->pi_avatar) }}" class="img-fluid" alt="">
                                         </a>
                                         <ul class="list-unstyled shop-icons">
-                                            <li><a href="{{ route('get.like.product',$product->id)}}" class="btn btn-icon btn-pills btn-soft-danger"><i data-feather="heart" class="icons"></i></a></li>
+                                            <!-- <li><a href="{{ route('get.like.product',$product->id)}}" class="btn btn-icon btn-pills btn-soft-danger"><i data-feather="heart" class="icons"></i></a></li> -->
                                             <li class="mt-2"><a href="{{ route('get.view.product',$product->id)}}" data-id="{{ $product->id }}"  class="productview btn btn-icon btn-pills btn-soft-primary"><i data-feather="eye" class="icons"></i></a></li>
                                             <li class="mt-2"><a href="{{ route('add.cart',$product->id) }}" class="btn btn-icon btn-pills btn-soft-warning"><i data-feather="shopping-cart" class="icons"></i></a></li>
                                         </ul>
@@ -225,7 +225,7 @@
             $(".productview").click(function (event){
                 event.preventDefault();
                 let $this = $(this);
-                let url = $this.attr('href');
+                let url = $this.attr('href');             
                 $("#productview").modal('show');
                 $.ajax({
                     url: url

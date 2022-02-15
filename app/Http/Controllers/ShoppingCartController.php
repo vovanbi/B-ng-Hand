@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use App\Http\Requests\RequestOrder;
 
 class ShoppingCartController extends FrontendController
 {
@@ -61,7 +62,7 @@ class ShoppingCartController extends FrontendController
                 'size' =>'M', 
                 'number' => $product->pro_number, 
                 'slug' => $product->pro_slug,
-                'img' => asset($product->images[0]->pi_avatar),
+                'img' => asset('uploads/'.$product->images[0]->pi_avatar),
             ],
         ]);
 
@@ -108,7 +109,7 @@ class ShoppingCartController extends FrontendController
     }
 
     //luu thong tin thanh toan
-    public function savePayment(Request $request)
+    public function savePayment(RequestOrder $request)
     {
         $totalMoney = str_replace(',','',\Cart::subtotal(0,3));
         $email = auth()->user()->email;

@@ -92,7 +92,7 @@
                 </div><!--end row-->
                 <div class="row">
                     <div class="col-lg-8 col-md-6 mt-4 pt-2">
-                        <a href="{{ route('home') }}" class="btn btn-primary">Mua thêm</a>
+                        <a href="{{ route('home') }}" class="btn btn-black">Mua thêm</a>
                         <!-- <a href="" class="btn btn-soft-primary ml-2">Cập nhật</a> -->
                     </div>
                     <div class="col-lg-4 col-md-6 ml-auto mt-4 pt-2">
@@ -114,7 +114,7 @@
                             </table>
                         </div>
                         <div class="mt-4 pt-2 text-right">
-                            <a href="{{ route('get.form.pay') }}" class="btn btn-primary">Thanh toán</a>
+                            <a href="{{ route('get.form.pay') }}" class="btn btn-black">Thanh toán</a>
                         </div>
                     </div><!--end col-->
                 </div><!--end row-->

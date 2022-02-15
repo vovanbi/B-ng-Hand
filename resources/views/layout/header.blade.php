@@ -43,8 +43,8 @@
                                 </div>
 
                                 <div class="mt-3 text-center">
-                                    <a href="{{ route('get.list.cart') }}" class="btn btn-primary mr-2">Giỏ hàng</a>
-                                    <a href="{{ route('get.form.pay') }}" class="btn btn-primary">Checkout</a>
+                                    <a style="font-size:15px" href="{{ route('get.list.cart') }}" class="btn btn-black mr-2">Giỏ hàng</a>
+                                    <a style="font-size:15px" href="{{ route('get.form.pay') }}" class="btn btn-black">Thanh Toán</a>
                                 </div>
                             </div>
                         </div>
@@ -108,14 +108,14 @@
                         </li>
         
                         <li class="has-submenu">
-                            <a href="{{ route('get.list.article') }}">Tin tức</a><span class="menu-arrow"></span>
+                            <a href="{{ route('get.list.article') }}">Tin tức</a>
                         </li>
                         <li class="has-submenu">
-                            <a href="{{ route('get.aboutUs') }}">Giới thiệu</a><span class="menu-arrow"></span>
+                            <a href="{{ route('get.aboutUs') }}">Giới thiệu</a>
                            
                         </li>
                         <li class="has-submenu">
-                            <a href="{{ route('get.contact') }}">Liên hệ</a><span class="menu-arrow"></span>
+                            <a href="{{ route('get.contact') }}">Liên hệ</a>
                             
                         </li>
                     </ul><!--end navigation menu-->

@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use App\Models\Product;
+use WithoutMiddleware;
 
 class ShoppingCartTest extends TestCase
 {
@@ -13,69 +14,53 @@ class ShoppingCartTest extends TestCase
      *
      * @return void
      */
-    public function testAddCart()
+    public function testAddCartSuccess()
     {
-        $product = Product::select('pro_name','id','pro_price','pro_sale','pro_number','pro_slug')->first();
-        $id= $product->id;
-        $price = $product->pro_price;
-        if($product->pro_sale)
-        {
-            $price = $price * (100-$product->pro_sale)/100;
-        }
-        if($product->pro_number == 0)
-        {
-            $error = 'Sản phẩm đã hết hàng';
-        }
-        else{
-            foreach (\Cart::content() as $key => $value) {
-                if($value->id==$id && $value->qty > $product->pro_number){
-                    $error = 'Sản phẩm đã hết hàng';
-                }
-            }
-        }
-        
-        if(isset($error)){
-            $this->assertTrue(isset($error));
-        }
-        else{
-            \Cart::add([
-                'id'=> $id,
-                'name'=> $product->pro_name,
-                'qty'=> 1,
-                'price'=> $price,
-                'weight' => 550,          
-                'options'=> [
-                    'avatar'=> $product->images[0]->pi_avatar,
-                    'sale'=> $product->pro_sale,
-                    'price_old'=> $product->pro_price,
-                    'size' =>'M', 
-                    'number' => $product->pro_number, 
-                    'slug' => $product->pro_slug,
-                    'img' => asset($product->images[0]->pi_avatar),
-                ],
-            ]);          
-            $result = \Cart::content();
-            $this->assertTrue(empty(!$result));
-            $success= 'Them vao gio hang thanh cong';
-            $this->assertTrue(isset($success));
-            \Cart::destroy(); 
-        }
+        $product = Product::find(5);
+        $this->assertTrue($product->pro_number>0);
+        $response = $this->get('/add/5');
+        $result = \Cart::content();
+        $this->assertTrue($result->isNotEmpty());
+        \Cart::destroy();
     }
-    public function testPayment()
+    public function testCannotAddCartWithOutOfProduct()
     {
-        $products = \Cart::content();
-        if(\Auth::check()){
-            $error = 'Bạn chưa đăng nhập';   
-            $this->assertTrue(isset($error));       
-        }
-        else if($products->isEmpty()){
-            $error = 'Giỏ hàng trống không thể thanh toán';
-            $this->assertTrue(isset($error));
-        }
-        else{
-            $success= 'Dat hang thanh cong';
-            $this->assertTrue(isset($success));
-        }
+        $product = Product::find(19);
+        $this->assertEquals($product->pro_number,0);
+        $response = $this->get('/add/19');   
+        $result = \Cart::content();
+        $this->assertTrue($result->isEmpty());
+    }
+    public function testCannotPaymentWithNoLogin()
+    {   
+        $this->assertFalse(\Auth::check());
+        $response = $this->get('/gio-hang/thanh-toan');
+        $response->assertStatus(302);
     }
 
+    public function testCannotPaymentWithOutOfProduct()
+    {   
+        $product = Product::find(19);
+        $this->assertEquals($product->pro_number,0);
+        $response = $this->get('/add/19');   
+        $result = \Cart::content();
+        $this->assertTrue($result->isEmpty());
+        $response = $this->get('/gio-hang/thanh-toan');
+        $response->assertStatus(302);
+    }
+
+    public function testViewPaymentSuccess()
+    {   
+        $this->withoutMiddleware();
+        $response = $this->post(route('post.login', ['email' => 'hungbbtbbt10@gmail.com','password' => 'fingerg12',]));
+
+        $product = Product::find(5);
+        $this->assertTrue($product->pro_number>0);
+        $response = $this->get('/add/5');
+        $result = \Cart::content();
+        $this->assertTrue($result->isNotEmpty());
+
+        $response = $this->get('/gio-hang/thanh-toan');
+        $response->assertStatus(200);
+    }
 }
