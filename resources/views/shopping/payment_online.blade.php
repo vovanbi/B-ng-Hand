@@ -43,13 +43,13 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>Họ Và Tên <span class="text-danger">*</span></label>
-                                            <input name="name" id="firstname" type="text" class="form-control" value="{{ auth()->user()->name }}" placeholder="First Name :">
+                                            <input maxlength="100" name="name" id="firstname" type="text" class="form-control" value="{{ auth()->user()->name }}" placeholder="First Name :">
                                         </div>
                                     </div><!--end col-->
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>Địa Chỉ <span class="text-danger">*</span></label>
-                                            <input type="text" name="address" id="address1" class="form-control" value="{{ auth()->user()->address }}" placeholder="House number and street name :">
+                                            <input maxlength="100" type="text" name="address" id="address1" class="form-control" value="{{ auth()->user()->address }}" placeholder="House number and street name :">
                                         </div>
                                     </div><!--end col-->
                                     <div class="col-12">
@@ -106,7 +106,7 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>Nội dung</label>
-                                            <textarea name="note" id="comments" rows="4" class="form-control" placeholder="Notes about your order :"></textarea>
+                                            <textarea maxlength="100" name="note" id="comments" rows="4" class="form-control" placeholder="Notes about your order :"></textarea>
                                         </div> 
                                     </div><!--end col-->
                                 </div><!--end row-->
@@ -138,7 +138,7 @@
                                     </table>
 
                                     <div class="mt-4 pt-2">
-                                        <button type="submit" class="btn btn-block btn-primary">Đặt Hàng</button>
+                                        <button type="submit" class="btn btn-block btn-black">Đặt Hàng</button>
                                     </div>
                                 </div>
                             </div>

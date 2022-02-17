@@ -278,7 +278,7 @@
             
                                                 <div class="col-md-12">
                                                     <div class="send">
-                                                    <button type="submit" class="btn btn-primary">Gửi Đánh Giá</button>
+                                                    <button type="submit" class="btn btn-black">Gửi Đánh Giá</button>
                                                     </div>
                                                 </div><!--end col-->
                                             </div><!--end row-->

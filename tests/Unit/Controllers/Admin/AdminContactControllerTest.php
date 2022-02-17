@@ -13,5 +13,6 @@ class AdminContactControllerTest extends TestCase
     	$response = $this->get('admin/contact');
     	$response->assertStatus(200);
     	$response->assertViewIs('admin.contact.index')->assertSee('Quản lý liên hệ');
+    	$this->assertTrue(isset($response['contacts']));
     }
 }

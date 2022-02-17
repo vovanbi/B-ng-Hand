@@ -55,6 +55,7 @@ Route::group(['prefix'=>'user','middleware'=> CheckLoginUser::class],function ()
     Route::post('updateInfo',[UserController::class,'updateInfo'])->name('updateInfo');
     Route::post('updatePassword',[UserController::class,'updatePassword'])->name('updatePassword');
     Route::get('delete/{id}',[UserController::class,'destroy'])->name('get.user.destroy');
+    Route::get('/detail/{id}',[UserController::class,'orderDetail'])->name('user.detail.order');
 
    
 });

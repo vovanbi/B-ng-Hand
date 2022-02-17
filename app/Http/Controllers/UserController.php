@@ -3,32 +3,32 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;	
+use App\Models\User;    
 use App\Models\Order;    
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends FrontendController
 {
 
-	public function __construct()
+    public function __construct()
     {
         parent::__construct();
     }
     public function getUser()
     {
-    	$user=User::find(auth()->id());
+        $user=User::find(auth()->id());
  
         $viewData=[
             'user' => $user
         ];
-    	return view('user.index',$viewData);
-      	
+        return view('user.index',$viewData);
+        
     }
     public function getSetting()
     {
         //info user
         $user=User::find(auth()->id());
-    	return view('user.setting',compact('user'));
+        return view('user.setting',compact('user'));
     }
     public function updateInfo(Request $request)
     {   
@@ -44,10 +44,10 @@ class UserController extends FrontendController
 
         if($request->hasFile('avatar'))
         {
-            if($user->avatar){
-                $unlink= 'uploads/user/'.$user->avatar;
-                unlink($unlink);
-            }
+            // if($user->avatar){
+            //     $unlink= 'uploads/user/'.$user->avatar;
+            //     unlink($unlink);
+            // }
             $name = date("y-m-d-h-m-s", time()) .'_'. $request->avatar->getClientOriginalName();
             $request->avatar->move(public_path().'/uploads/user', $name);
             //save image
@@ -103,5 +103,14 @@ class UserController extends FrontendController
             'user' => $user
         ];
         return view('user.post',$viewData);
+    }
+    public function orderDetail(Request $request,$id)
+    {
+        if ($request->ajax())
+        {
+            $ordersDetail = Order::find($id)->orderDetails;
+            $html = view('user.orderDetail',compact('ordersDetail'))->render();
+            return \response()->json($html);
+        }
     }
 }

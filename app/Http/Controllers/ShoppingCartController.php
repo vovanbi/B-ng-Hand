@@ -9,19 +9,25 @@ use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use App\Http\Requests\RequestOrder;
 
 class ShoppingCartController extends FrontendController
 {
     private $vnp_TmnCode = "UDOPNWS1"; //Mã website tại VNPAY
     private $vnp_HashSecret = "EBAHADUGCOEWYXCMYZRMTMLSHGKNRPBN"; //Chuỗi bí mật
     private $vnp_Url = "http://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-    private $vnp_Returnurl = "http://localhost:81/B-ng-Hand/public/gio-hang/thanh-toan-online";
+    private $vnp_Returnurl;
     //test
     // Ngân hàng: NCB
     // Số thẻ: 9704198526191432198
     // Tên chủ thẻ:NGUYEN VAN A
     // Ngày phát hành:07/15
     // Mật khẩu OTP:123456
+
+    public function __construct()
+    {
+        $this->vnp_Returnurl= asset('gio-hang/thanh-toan-online');
+    }
 
     //them gio hang
     public function addProduct(Request $request,$id)
@@ -56,7 +62,7 @@ class ShoppingCartController extends FrontendController
                 'size' =>'M', 
                 'number' => $product->pro_number, 
                 'slug' => $product->pro_slug,
-                'img' => asset($product->images[0]->pi_avatar),
+                'img' => asset('uploads/'.$product->images[0]->pi_avatar),
             ],
         ]);
 
@@ -103,7 +109,7 @@ class ShoppingCartController extends FrontendController
     }
 
     //luu thong tin thanh toan
-    public function savePayment(Request $request)
+    public function savePayment(RequestOrder $request)
     {
         $totalMoney = str_replace(',','',\Cart::subtotal(0,3));
         $email = auth()->user()->email;

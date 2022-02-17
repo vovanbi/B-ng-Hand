@@ -13,5 +13,6 @@ class AdminCategoryControllerTest extends TestCase
     	$response = $this->get('admin/category');
     	$response->assertStatus(200);
     	$response->assertViewIs('admin.category.index')->assertSee('Quản lý danh mục');
+    	$this->assertTrue(isset($response['categories']));
     }
 }

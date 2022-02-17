@@ -13,5 +13,6 @@ class AdminProductControllerTest extends TestCase
     	$response = $this->get('admin/product');
     	$response->assertStatus(200);
     	$response->assertViewIs('admin.product.index')->assertSee('Quản lý sản phẩm');
+    	$this->assertTrue(isset($response['products']));
     }
 }

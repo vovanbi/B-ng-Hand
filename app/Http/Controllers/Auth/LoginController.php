@@ -72,7 +72,6 @@ class LoginController extends Controller
 
     protected function loginOrCreateAccount($providerUser, $driver)
     {
-        dd($providerUser);
         // check for already has account
         $user = User::where('email', $providerUser->getEmail())->first();
 

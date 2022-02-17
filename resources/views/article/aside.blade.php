@@ -41,7 +41,7 @@
               <h5 class="widget-title">Tags</h5>
               <div class="tagcloud mt-4">
                   @foreach($categories as $category)
-                  <a href="{{ route('get.product.category',$category->c_slug) }}" class="rounded">{{$category->c_name}}</a>
+                  <a href="{{ route('get.product.category',$category->c_slug) }}" class="btn btn-black rounded">{{$category->c_name}}</a>
                   @endforeach                                      
               </div>
           </div>

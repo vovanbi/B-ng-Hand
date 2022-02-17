@@ -62,7 +62,7 @@
                     </div><!--end row-->
                     <div class="row">
                         <div class="col-sm-12">
-                            <input type="submit" id="submit" name="send" class="btn btn-primary" value="Lưu Thay Đổi">
+                            <input type="submit" id="submit" name="send" class="btn btn-black" value="Lưu Thay Đổi">
                         </div><!--end col-->
                     </div><!--end row-->
                 </form><!--end form-->
@@ -113,7 +113,7 @@
                                 </div><!--end col-->
 
                                 <div class="col-lg-12 mt-2 mb-0">
-                                    <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+                                    <button type="submit" class="btn btn-black">Lưu thay đổi</button>
                                 </div><!--end col-->
                             </div><!--end row-->
                         </form>

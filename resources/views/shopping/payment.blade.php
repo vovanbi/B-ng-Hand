@@ -43,20 +43,34 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>Họ Và Tên <span class="text-danger">*</span></label>
-                                            <input name="name" id="firstname" type="text" class="form-control" value="{{ auth()->user()->name }}" placeholder="First Name :" required="">
+                                            <input name="name" maxlength="100" id="firstname" type="text" class="form-control" value="{{ auth()->user()->name }}" placeholder="First Name :" required="">
                                         </div>
                                     </div><!--end col-->
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>Địa Chỉ <span class="text-danger">*</span></label>
-                                            <input type="text" name="address" id="address1" class="form-control" value="{{ auth()->user()->address }}" placeholder="House number and street name :" required="">
+                                            <input type="text" maxlength="100" name="address" id="address1" class="form-control" value="{{ auth()->user()->address }}" placeholder="House number and street name :" required="">
+                                            <span class="form-message">
+                                             @if($errors->has('address'))
+                                            <span class="text-danger">
+                                                {{ $errors->first('address') }}
+                                            </span>
+                                             @endif
+                                         </span>
                                         </div>
                                     </div><!--end col-->
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>Số Điện Thoại <span class="text-danger">*</span></label>
-                                            <input type="text" name="phone" id="phone" class="form-control" value="{{ auth()->user()->phone }}" placeholder="State Name :" required="">
+                                            <input type="number" name="phone" id="phone" class="form-control" value="{{ auth()->user()->phone }}" placeholder="State Name :" required="">
                                         </div>
+                                        <span class="form-message">
+                                             @if($errors->has('phone'))
+                                            <span class="text-danger">
+                                                {{ $errors->first('phone') }}
+                                            </span>
+                                             @endif
+                                         </span>
                                     </div><!--end col-->
                                     <div class="col-12">
                                         <div class="form-group">
@@ -67,7 +81,7 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label>Nội dung</label>
-                                            <textarea name="note" id="comments" rows="4" class="form-control" placeholder="Notes about your order :"></textarea>
+                                            <textarea maxlength="100" name="note" id="comments" rows="4" class="form-control" placeholder="Notes about your order :"></textarea>
                                         </div> 
                                     </div><!--end col-->
                                 </div><!--end row-->
@@ -103,7 +117,7 @@
                                     </div>
 
                                     <div class="mt-4 pt-2">
-                                        <button type="submit" class="btn btn-block btn-primary">Đặt Hàng</button>
+                                        <button type="submit" class="btn btn-block btn-black">Đặt Hàng</button>
                                     </div>
                                 </div>
                             </div>
